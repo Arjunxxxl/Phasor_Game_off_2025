@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public PhaseManager phaseManager { get; private set; }
     public PlayerCollisionDetection playerCollisionDetection { get; private set; }
 
-    #region
+    #region Singleton
 
     public static Player Instance;
 
@@ -46,6 +46,9 @@ public class Player : MonoBehaviour
         playerAnimator.SetUp();
         phaseManager.SetUp(this);
         playerCollisionDetection.SetUp(this);
+
+        Vector3 spawnPos = RespawnManager.Instance.GetLastCheckPointSpawnPos();
+        transform.position = spawnPos;
     }
 
     #endregion

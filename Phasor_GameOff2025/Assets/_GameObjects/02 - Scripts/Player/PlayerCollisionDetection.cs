@@ -5,14 +5,23 @@ public class PlayerCollisionDetection : MonoBehaviour
 {
     [Header("Layer")] 
     [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private LayerMask checkPointLayer;
     
     // Ref
     private Player player;
+    private RespawnManager respawnManager;
+
+    private void Update()
+    {
+        CheckIfPlayerFellBelowLevel();
+    }
 
     #region SetUp
 
     public void SetUp(Player player)
     {
+        respawnManager = RespawnManager.Instance;
+        
         this.player = player;
     }
 
@@ -34,6 +43,24 @@ public class PlayerCollisionDetection : MonoBehaviour
                 
                 player.playerMovement.AddVelocityOnObstacle(hitVelocity);
             }
+        }
+        else if ((checkPointLayer.value & (1 << other.gameObject.layer)) != 0)
+        {
+            CheckPoint checkPoint = other.GetComponent<CheckPoint>();
+            if (checkPoint != null)
+            {
+                respawnManager.UpdatedLastCheckPoint(checkPoint);
+            }
+        }
+    }
+
+    private void CheckIfPlayerFellBelowLevel()
+    {
+        float yPos = transform.position.y;
+
+        if (yPos <= Constants.Player.LevelBelowYPos)
+        {
+            respawnManager.RespawnPlayerAtLastCheckPoint();
         }
     }
 }

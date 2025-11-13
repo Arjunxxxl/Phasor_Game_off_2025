@@ -16,6 +16,24 @@ public class CameraController : MonoBehaviour
     // Target
     private Transform targetT;
     
+    #region Singleton
+
+    public static CameraController Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    #endregion
+    
     private void Start()
     {
         targetT = Player.Instance.transform;
@@ -29,6 +47,16 @@ public class CameraController : MonoBehaviour
         MoveRigToTarget();
     }
 
+    #region Restting
+
+    public void SnapCameraToPlayer()
+    {
+        SetUpRig();
+        SetUpPivot();
+    }
+
+    #endregion
+    
     #region Rig
 
     private void SetUpRig()

@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDir;
     private float ySpeed;
     private Vector3 obstacleHitVelocity;
+    private bool stopAllMovement;
     
     // Jump Data
     private float jumpSpeed;
@@ -44,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (stopAllMovement)
+        {
+            return;
+        }
+        
         GetInput();
 
         DetectGround();
@@ -74,6 +80,20 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    #region Reset
+
+    public void ResetAllMovement()
+    {
+        moveDir = Vector3.zero;
+        ySpeed = 0.0f;
+
+        isJumping = false;
+        
+        obstacleHitVelocity = Vector3.zero;
+    }
+
+    #endregion
+    
     #region Input
 
     private void GetInput()
@@ -194,6 +214,15 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    #region Movement Stopping
+
+    public void StopAllMovement(bool stop)
+    {
+        stopAllMovement = stop;
+    }
+
+    #endregion
+    
     #region Obstacle
 
     public void AddVelocityOnObstacle(Vector3 velocity)
