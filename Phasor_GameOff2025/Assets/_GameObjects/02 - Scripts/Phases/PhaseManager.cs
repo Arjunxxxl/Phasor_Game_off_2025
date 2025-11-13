@@ -77,6 +77,8 @@ public class PhaseManager : MonoBehaviour
         phaseActiveTimeElapsed = 0.0f;
         phaseActiveDuration = Constants.PhaseData.PhaseActiveDuration;
         isPhaseCountdownActive = activePhase != PhasesType.Default;
+
+        EnablePhaseEffect(activePhase);
     }
 
     private void TickPhaseCoolDownTimer()
@@ -86,13 +88,61 @@ public class PhaseManager : MonoBehaviour
             return;
         }
         
-        phaseActiveTimeElapsed += Time.deltaTime;
+        phaseActiveTimeElapsed += Time.unscaledDeltaTime;
         if (phaseActiveTimeElapsed >= phaseActiveDuration)
         {
             isPhaseCountdownActive = false;
+            
+            DisablePhaseEffect(activePhase);
             ActivatePhase(PhasesType.Default);
         }
     }
+
+    #endregion
+
+    #region Phase Effect
+
+    private void EnablePhaseEffect(PhasesType phase)
+    {
+        switch (phase)
+        {
+            case PhasesType.Default:
+                break;
+            
+            case PhasesType.TimeShift:
+                EnableTimeShiftEffect();
+                break;
+        }
+    }
+
+    private void DisablePhaseEffect(PhasesType phase)
+    {
+        switch (phase)
+        {
+            case PhasesType.Default:
+                break;
+            
+            case PhasesType.TimeShift:
+                DisableTimeShiftEffect();
+                break;
+        }
+    }
+    
+    #region Time Shift
+
+    private void EnableTimeShiftEffect()
+    {
+        Time.timeScale = Constants.PhaseData.TimeShiftTimeSlow;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;;
+    }
+
+    private void DisableTimeShiftEffect()
+    {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    }
+
+    #endregion
 
     #endregion
 }

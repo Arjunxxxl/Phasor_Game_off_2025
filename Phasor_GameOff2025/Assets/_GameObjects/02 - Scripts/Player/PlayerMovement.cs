@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     private Vector3 moveDir;
     private float ySpeed;
+    private Vector3 obstacleHitVelocity;
     
     // Jump Data
     private float jumpSpeed;
@@ -48,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         DetectGround();
         TriggerJump();
         MovePlayer();
+        UpdateObstacleHitSpeed();
 
         RotatePlayer();
     }
@@ -78,6 +80,15 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = userInput.MoveInput;
         jumpInput = userInput.JumpInput;
+        
+        if (moveInput.x != 0 || moveInput.y != 0)
+        {
+            player.playerAnimator.PlayRunAnimation();
+        }
+        else
+        {
+            player.playerAnimator.StopRunAnimation();
+        }
     }
 
     #endregion
@@ -91,17 +102,10 @@ public class PlayerMovement : MonoBehaviour
 
         UpdatedYSpeed();
         moveDir.y = ySpeed;
-        
-        characterController.Move(moveDir * Time.deltaTime);
 
-        if (moveDir.x != 0 || moveDir.z != 0)
-        {
-            player.playerAnimator.PlayRunAnimation();
-        }
-        else
-        {
-            player.playerAnimator.StopRunAnimation();
-        }
+        moveDir += obstacleHitVelocity;
+        
+        characterController.Move(moveDir * Time.unscaledDeltaTime);
     }
 
     private void UpdatedYSpeed()
@@ -110,14 +114,14 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             gravity = groundedGravity;
-            ySpeed += Time.deltaTime * gravity;
+            ySpeed += Time.unscaledDeltaTime * gravity;
         }
         else if (isFalling)
         {
             gravity = jumpGravity;
 
             float prefSpeed = ySpeed;
-            float nextSpeed = prefSpeed + Time.deltaTime * gravity * fallMul;
+            float nextSpeed = prefSpeed + Time.unscaledDeltaTime * gravity * fallMul;
             
             ySpeed = (prefSpeed + nextSpeed) * 0.5f;
 
@@ -131,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             gravity = jumpGravity;
 
             float prefSpeed = ySpeed;
-            float nextSpeed = prefSpeed + Time.deltaTime * gravity;
+            float nextSpeed = prefSpeed + Time.unscaledDeltaTime * gravity;
             
             ySpeed = (prefSpeed + nextSpeed) * 0.5f;
         }
@@ -185,7 +189,47 @@ public class PlayerMovement : MonoBehaviour
         Quaternion newRotation = Quaternion.LookRotation(rotationDir, Vector3.up);
 
         containerGo.transform.rotation =
-            Quaternion.Lerp(containerGo.transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
+            Quaternion.Lerp(containerGo.transform.rotation, newRotation, rotationSpeed * Time.unscaledDeltaTime);
+    }
+
+    #endregion
+
+    #region Obstacle
+
+    public void AddVelocityOnObstacle(Vector3 velocity)
+    {
+        obstacleHitVelocity = velocity;
+    }
+
+    private void UpdateObstacleHitSpeed()
+    {
+        if (obstacleHitVelocity.x > 0)
+        {
+            obstacleHitVelocity.x += Time.unscaledDeltaTime * Constants.Player.ObstacleHitSpeedDecrement.x;
+
+            if (obstacleHitVelocity.x <= 0)
+            {
+                obstacleHitVelocity.x = 0;
+            }
+        }
+        if (obstacleHitVelocity.y > 0)
+        {
+            obstacleHitVelocity.y += Time.unscaledDeltaTime * Constants.Player.ObstacleHitSpeedDecrement.y;
+
+            if (obstacleHitVelocity.y <= 0)
+            {
+                obstacleHitVelocity.y = 0;
+            }
+        }
+        if (obstacleHitVelocity.z > 0)
+        {
+            obstacleHitVelocity.z += Time.unscaledDeltaTime * Constants.Player.ObstacleHitSpeedDecrement.z;
+
+            if (obstacleHitVelocity.z <= 0)
+            {
+                obstacleHitVelocity.z = 0;
+            }
+        }
     }
 
     #endregion

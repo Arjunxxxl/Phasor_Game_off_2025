@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     public PlayerAnimator playerAnimator { get; private set; }
     public PhaseManager phaseManager { get; private set; }
+    public PlayerCollisionDetection playerCollisionDetection { get; private set; }
 
     #region
 
@@ -39,10 +40,12 @@ public class Player : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimator = GetComponent<PlayerAnimator>();
         phaseManager = GetComponent<PhaseManager>();
+        playerCollisionDetection = GetComponent<PlayerCollisionDetection>();
         
         playerMovement.SetUp(this);
         playerAnimator.SetUp();
         phaseManager.SetUp(this);
+        playerCollisionDetection.SetUp(this);
     }
 
     #endregion
