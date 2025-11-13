@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     // Ref
     public PlayerMovement playerMovement { get; private set; }
     public PlayerAnimator playerAnimator { get; private set; }
+    public PhaseManager phaseManager { get; private set; }
 
     #region
 
@@ -37,9 +38,11 @@ public class Player : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimator = GetComponent<PlayerAnimator>();
+        phaseManager = GetComponent<PhaseManager>();
         
         playerMovement.SetUp(this);
         playerAnimator.SetUp();
+        phaseManager.SetUp(this);
     }
 
     #endregion

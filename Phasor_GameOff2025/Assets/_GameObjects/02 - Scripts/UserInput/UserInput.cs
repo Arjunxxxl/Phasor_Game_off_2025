@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class UserInput : MonoBehaviour
 {
+    // Player Movement Input
     private Vector2 moveInput;
     private bool jumpInput;
+
+    // Phase Input
+    private int phaseInput;
     
     public Vector2 MoveInput => moveInput;
     public bool JumpInput => jumpInput;
+    public int PhaseInput => phaseInput;
     
     #region
 
@@ -29,10 +34,26 @@ public class UserInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetPlayerMovementInput();
+        GetPhasedInput();
+    }
+
+    private void GetPlayerMovementInput()
+    {
         moveInput.x = Input.GetAxis("Horizontal");
         moveInput.y = Input.GetAxis("Vertical");
         moveInput.Normalize();
         
         jumpInput = Input.GetButton("Jump");
+    }
+
+    private void GetPhasedInput()
+    {
+        phaseInput = 0;
+        
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            phaseInput = 1;
+        }
     }
 }
