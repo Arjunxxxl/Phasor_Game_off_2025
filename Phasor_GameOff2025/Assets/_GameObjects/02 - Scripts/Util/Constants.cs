@@ -14,5 +14,6 @@ public static class Constants
     {
         public static readonly float PhaseActiveDuration = 5.0f;
         public static readonly float TimeShiftTimeSlow = 0.25f;
+        public static readonly float MirrorImageDist = 5.0f;
     }
 }

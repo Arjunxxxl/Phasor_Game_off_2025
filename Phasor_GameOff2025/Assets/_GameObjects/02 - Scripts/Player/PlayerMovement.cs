@@ -289,4 +289,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
+
+    #region Getters
+
+    public Vector3 GetActualForwardDir()
+    {
+        return containerGo.transform.forward;
+    }
+
+    #endregion
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,6 +68,7 @@ public class PhaseManager : MonoBehaviour
         availablePhases.Add(PhasesType.Default);
         availablePhases.Add(PhasesType.TimeShift);
         availablePhases.Add(PhasesType.Air);
+        availablePhases.Add(PhasesType.Mirror);
     }
 
     private void SetUpDataReqForPhases()
@@ -161,6 +163,10 @@ public class PhaseManager : MonoBehaviour
             case PhasesType.AstralPlane:
                 EnableAstralEffect();
                 break;
+            
+            case PhasesType.Mirror:
+                EnableMirrorEffect();
+                break;
         }
     }
 
@@ -235,5 +241,30 @@ public class PhaseManager : MonoBehaviour
 
     #endregion
 
+    #region Mirror
+
+    private void EnableMirrorEffect()
+    {
+        player.playerMovement.ResetAllMovement();
+        player.playerMovement.StopAllMovement(true);
+        
+        Transform playerT = player.transform;
+        Vector3 forward = player.playerMovement.GetActualForwardDir();
+
+        Vector3 landingPoint = playerT.position + forward * Constants.PhaseData.MirrorImageDist;
+        
+        playerT.position = landingPoint;
+        
+        StartCoroutine(EnableAllPlayerMovement());
+    }
+
+    IEnumerator EnableAllPlayerMovement()
+    {
+        yield return new WaitForFixedUpdate();
+        player.playerMovement.StopAllMovement(false);
+    }
+    
+    #endregion
+    
     #endregion
 }

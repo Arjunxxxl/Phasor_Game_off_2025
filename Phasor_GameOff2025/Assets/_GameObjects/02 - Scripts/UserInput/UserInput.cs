@@ -60,5 +60,20 @@ public class UserInput : MonoBehaviour
         {
             phaseInput = 2;
         }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            phaseInput = 3;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            phaseInput = 4;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            phaseInput = 5;
+        }
     }
 }
