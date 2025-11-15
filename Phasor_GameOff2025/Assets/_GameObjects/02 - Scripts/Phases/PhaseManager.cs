@@ -14,7 +14,7 @@ public class PhaseManager : MonoBehaviour
 
     // Data Req For Phases
     private List<BoxCollider> LightBeamColliders = new List<BoxCollider>();
-    private readonly string AstralGroundTag = "AstralGround";
+    private readonly string AstralPlaneTag = "AstralPlane";
     
     // Ref
     private Player player;
@@ -71,7 +71,7 @@ public class PhaseManager : MonoBehaviour
 
     private void SetUpDataReqForPhases()
     {
-        GameObject[] astralGrounds = GameObject.FindGameObjectsWithTag(AstralGroundTag);
+        GameObject[] astralGrounds = GameObject.FindGameObjectsWithTag(AstralPlaneTag);
         
         LightBeamColliders = new List<BoxCollider>();
 
