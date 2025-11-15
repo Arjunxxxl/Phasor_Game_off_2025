@@ -4,7 +4,7 @@ public static class Constants
 {
     public static class Player
     {
-        public static readonly float LevelBelowYPos = -5.0f;
+        public static readonly float LevelBelowYPos = -10.0f;
         
         public static readonly float HangingAxeHitSpeed = 10.0f;
         public static readonly Vector3 ObstacleHitSpeedDecrement = new Vector3(-3.5f, -10.0f, -3.5f);
