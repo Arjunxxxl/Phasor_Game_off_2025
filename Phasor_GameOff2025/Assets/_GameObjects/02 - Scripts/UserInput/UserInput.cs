@@ -54,6 +54,11 @@ public class UserInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
         {
             phaseInput = 1;
+        } 
+        
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            phaseInput = 2;
         }
     }
 }

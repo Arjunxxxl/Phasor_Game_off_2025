@@ -16,6 +16,9 @@ public class PhaseManager : MonoBehaviour
     // ref
     private Player player;
     private UserInput userInput;
+    
+    // Properties
+    public PhasesType ActivePhase => activePhase;
 
     private void Update()
     {
@@ -41,6 +44,7 @@ public class PhaseManager : MonoBehaviour
         availablePhases = new List<PhasesType>();
         availablePhases.Add(PhasesType.Default);
         availablePhases.Add(PhasesType.TimeShift);
+        availablePhases.Add(PhasesType.Air);
     }
 
     #endregion
@@ -64,11 +68,13 @@ public class PhaseManager : MonoBehaviour
     {
         if (activePhase == phase)
         {
+            Debug.Log("Trying to activate same phase" + phase);
             return;
         }
         
         if (!availablePhases.Contains(phase))
         {
+            Debug.Log("Phase not available: " + phase);
             return;
         }
         

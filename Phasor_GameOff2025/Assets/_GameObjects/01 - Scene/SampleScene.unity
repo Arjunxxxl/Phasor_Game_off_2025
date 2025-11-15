@@ -1816,6 +1816,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2037286349353703800, guid: d89a9bca6fadbd648942c730d59caadb, type: 3}
+      propertyPath: maxJumpTime_AirPhase
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037286349353703800, guid: d89a9bca6fadbd648942c730d59caadb, type: 3}
+      propertyPath: maxJumpHeight_AirPhase
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2505225571001329071, guid: d89a9bca6fadbd648942c730d59caadb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

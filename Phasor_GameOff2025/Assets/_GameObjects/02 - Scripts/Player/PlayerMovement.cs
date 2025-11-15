@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseMoveSpeed;
     [SerializeField] private float maxJumpHeight;
     [SerializeField] private float maxJumpTime;
+    [SerializeField] private float maxJumpHeight_AirPhase;
+    [SerializeField] private float maxJumpTime_AirPhase;
     [SerializeField] private float rotationSpeed;
     
     // Input
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     
     // Jump Data
     private float jumpSpeed;
+    private float jumpSpeed_AirPhase;
     private bool isJumping = false;
     private float fallMul = 2.0f;
     
@@ -33,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Gravity Data
     private float groundedGravity = -0.5f;
     private float jumpGravity;
+    private float jumpGravity_AirPhase;
     private float gravity;
     
     // Character Controller
@@ -73,9 +77,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = baseMoveSpeed;
         gravity = groundedGravity;
 
-        float timeToApex = maxJumpTime * 0.5f;
-        jumpGravity = -1 * (2 * maxJumpHeight / Mathf.Pow(timeToApex, 2));
-        jumpSpeed = ((maxJumpHeight - (0.5f * jumpGravity * Mathf.Pow(timeToApex, 2.0f))) / timeToApex);
+        CalcJumpData();
     }
 
     #endregion
@@ -138,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (isFalling)
         {
-            gravity = jumpGravity;
+            gravity = player.phaseManager.ActivePhase == PhasesType.Air ? jumpGravity_AirPhase : jumpGravity;
 
             float prefSpeed = ySpeed;
             float nextSpeed = prefSpeed + Time.unscaledDeltaTime * gravity * fallMul;
@@ -152,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            gravity = jumpGravity;
+            gravity = player.phaseManager.ActivePhase == PhasesType.Air ? jumpGravity_AirPhase : jumpGravity;
 
             float prefSpeed = ySpeed;
             float nextSpeed = prefSpeed + Time.unscaledDeltaTime * gravity;
@@ -170,11 +172,24 @@ public class PlayerMovement : MonoBehaviour
 
     #region Jumping
 
+    private void CalcJumpData()
+    {
+        float timeToApex = maxJumpTime * 0.5f;
+        jumpGravity = -1 * (2 * maxJumpHeight / Mathf.Pow(timeToApex, 2));
+        jumpSpeed = ((maxJumpHeight - (0.5f * jumpGravity * Mathf.Pow(timeToApex, 2.0f))) / timeToApex);
+        
+        float timeToApex_AirPhase = maxJumpTime_AirPhase * 0.5f;
+        jumpGravity_AirPhase = -1 * (2 * maxJumpHeight_AirPhase / Mathf.Pow(timeToApex_AirPhase, 2));
+        jumpSpeed_AirPhase = (maxJumpHeight_AirPhase - 
+                              (0.5f * jumpGravity_AirPhase * Mathf.Pow(timeToApex_AirPhase, 2.0f))) / timeToApex_AirPhase;
+    }
+    
     private void TriggerJump()
     {
         if (!isJumping && isGrounded && jumpInput)
         {
-            ySpeed = jumpSpeed * 0.5f;
+            float speed = player.phaseManager.ActivePhase == PhasesType.Air ? jumpSpeed_AirPhase : jumpSpeed;
+            ySpeed = speed * 0.5f;
             isJumping = true;
             
             player.playerAnimator.PlayJumpAnimation();
@@ -205,6 +220,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 rotationDir = moveDir;
         rotationDir.y = 0;
+
+        if (rotationDir.x == 0 && rotationDir.z == 0)
+        {
+            return;
+        }
 
         Quaternion newRotation = Quaternion.LookRotation(rotationDir, Vector3.up);
 
