@@ -9,7 +9,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     
     // Ref
     private Player player;
-    private RespawnManager respawnManager;
+    private CheckPointManager checkPointManager;
 
     private void Update()
     {
@@ -20,7 +20,7 @@ public class PlayerCollisionDetection : MonoBehaviour
 
     public void SetUp(Player player)
     {
-        respawnManager = RespawnManager.Instance;
+        checkPointManager = CheckPointManager.Instance;
         
         this.player = player;
     }
@@ -49,7 +49,7 @@ public class PlayerCollisionDetection : MonoBehaviour
             CheckPoint checkPoint = other.GetComponent<CheckPoint>();
             if (checkPoint != null)
             {
-                respawnManager.UpdatedLastCheckPoint(checkPoint);
+                checkPointManager.UpdatedLastCheckPoint(checkPoint);
             }
         }
     }
@@ -60,7 +60,7 @@ public class PlayerCollisionDetection : MonoBehaviour
 
         if (yPos <= Constants.Player.LevelBelowYPos)
         {
-            respawnManager.RespawnPlayerAtLastCheckPoint();
+            checkPointManager.RespawnPlayerAtLastCheckPoint();
         }
     }
 }

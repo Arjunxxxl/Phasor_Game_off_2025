@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         
         phaseManager.SetUp(this);
 
-        Vector3 spawnPos = RespawnManager.Instance.GetLastCheckPointSpawnPos();
+        Vector3 spawnPos = CheckPointManager.Instance.GetLastCheckPointSpawnPos();
         transform.position = spawnPos;
     }
 

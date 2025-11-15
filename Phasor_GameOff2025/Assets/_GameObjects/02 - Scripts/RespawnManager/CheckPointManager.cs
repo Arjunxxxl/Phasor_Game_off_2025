@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
-public class RespawnManager : MonoBehaviour
+public class CheckPointManager : MonoBehaviour
 {
     [Header("Spawn Point")]
     [SerializeField] private CheckPoint lastCheckPoint;
@@ -13,7 +12,7 @@ public class RespawnManager : MonoBehaviour
     
     #region Singleton
 
-    public static RespawnManager Instance;
+    public static CheckPointManager Instance;
 
     private void Awake()
     {
@@ -43,6 +42,12 @@ public class RespawnManager : MonoBehaviour
         }
         
         lastCheckPoint = checkPoint;
+        
+        CheckPointType checkPointType = lastCheckPoint.CheckPointType;
+        if (checkPointType == CheckPointType.LevelEnd)
+        {
+            //TODO: Move to next level
+        }
     }
 
     public Vector3 GetLastCheckPointSpawnPos()
