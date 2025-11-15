@@ -115,6 +115,8 @@ public class PhaseManager : MonoBehaviour
             return;
         }
         
+        DisablePhaseEffect(activePhase);
+        
         activePhase = phase;
         
         phaseActiveTimeElapsed = 0.0f;
