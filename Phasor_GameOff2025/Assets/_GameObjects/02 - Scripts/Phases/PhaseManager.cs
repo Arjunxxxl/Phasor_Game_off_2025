@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,13 +12,35 @@ public class PhaseManager : MonoBehaviour
     private float phaseActiveDuration = 0.0f;
     private bool isPhaseCountdownActive = false;
 
-    // ref
+    // Data Req For Phases
+    private List<BoxCollider> LightBeamColliders = new List<BoxCollider>();
+    private readonly string AstralGroundTag = "AstralGround";
+    
+    // Ref
     private Player player;
     private UserInput userInput;
     
     // Properties
     public PhasesType ActivePhase => activePhase;
 
+    #region Singleton
+
+    public static PhaseManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    #endregion
+    
     private void Update()
     {
         ReadPhaseInput();
@@ -35,6 +56,7 @@ public class PhaseManager : MonoBehaviour
         this.player = player;
 
         LoadAvailablePhases();
+        SetUpDataReqForPhases();
 
         ActivatePhase(PhasesType.Default);
     }
@@ -45,6 +67,19 @@ public class PhaseManager : MonoBehaviour
         availablePhases.Add(PhasesType.Default);
         availablePhases.Add(PhasesType.TimeShift);
         availablePhases.Add(PhasesType.Air);
+    }
+
+    private void SetUpDataReqForPhases()
+    {
+        GameObject[] astralGrounds = GameObject.FindGameObjectsWithTag(AstralGroundTag);
+        
+        LightBeamColliders = new List<BoxCollider>();
+
+        for (int i = 0; i < astralGrounds.Length; i++)
+        {
+            BoxCollider boxCollider = astralGrounds[i].GetComponent<BoxCollider>();
+            LightBeamColliders.Add(boxCollider);
+        }
     }
 
     #endregion
@@ -118,6 +153,14 @@ public class PhaseManager : MonoBehaviour
             case PhasesType.TimeShift:
                 EnableTimeShiftEffect();
                 break;
+            
+            case PhasesType.Air:
+                EnableAirEffect();
+                break;
+            
+            case PhasesType.AstralPlane:
+                EnableAstralEffect();
+                break;
         }
     }
 
@@ -130,6 +173,14 @@ public class PhaseManager : MonoBehaviour
             
             case PhasesType.TimeShift:
                 DisableTimeShiftEffect();
+                break;
+            
+            case PhasesType.Air:
+                DisableAirEffect();
+                break;
+            
+            case PhasesType.AstralPlane:
+                DisableAstralEffect();
                 break;
         }
     }
@@ -146,6 +197,40 @@ public class PhaseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    }
+
+    #endregion
+
+    #region Air
+
+    private void EnableAirEffect()
+    {
+        player.playerMovement.SetHighJump(true);
+    }
+
+    private void DisableAirEffect()
+    {
+        player.playerMovement.SetHighJump(false);
+    }
+
+    #endregion
+    
+    #region Astral Plane
+
+    private void EnableAstralEffect()
+    {
+        for (int idx = 0; idx < LightBeamColliders.Count; idx++)
+        {
+            LightBeamColliders[idx].isTrigger = false;
+        }
+    }
+
+    private void DisableAstralEffect()
+    {
+        for (int idx = 0; idx < LightBeamColliders.Count; idx++)
+        {
+            LightBeamColliders[idx].isTrigger = true;
+        }
     }
 
     #endregion

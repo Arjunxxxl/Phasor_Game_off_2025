@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Ref
+    // Ref Self
     public PlayerMovement playerMovement { get; private set; }
     public PlayerAnimator playerAnimator { get; private set; }
-    public PhaseManager phaseManager { get; private set; }
     public PlayerCollisionDetection playerCollisionDetection { get; private set; }
+    
+    // Ref Others
+    public PhaseManager phaseManager { get; private set; }
 
     #region Singleton
 
@@ -39,13 +41,15 @@ public class Player : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimator = GetComponent<PlayerAnimator>();
-        phaseManager = GetComponent<PhaseManager>();
         playerCollisionDetection = GetComponent<PlayerCollisionDetection>();
+        
+        phaseManager = PhaseManager.Instance;
         
         playerMovement.SetUp(this);
         playerAnimator.SetUp();
-        phaseManager.SetUp(this);
         playerCollisionDetection.SetUp(this);
+        
+        phaseManager.SetUp(this);
 
         Vector3 spawnPos = RespawnManager.Instance.GetLastCheckPointSpawnPos();
         transform.position = spawnPos;

@@ -1102,7 +1102,6 @@ GameObject:
   - component: {fileID: 7396674128755352194}
   - component: {fileID: 2037286349353703800}
   - component: {fileID: 5915288420615681864}
-  - component: {fileID: 7861267831923007667}
   - component: {fileID: 6169343206493632569}
   m_Layer: 0
   m_Name: Player
@@ -1203,6 +1202,8 @@ MonoBehaviour:
   baseMoveSpeed: 7.5
   maxJumpHeight: 4
   maxJumpTime: 0.75
+  maxJumpHeight_AirPhase: 8
+  maxJumpTime_AirPhase: 1.5
   rotationSpeed: 50
 --- !u!114 &5915288420615681864
 MonoBehaviour:
@@ -1216,18 +1217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f1e27b41328c3418b9d448caf39afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
---- !u!114 &7861267831923007667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5809307725178127458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90074beb5def3f4ba5d9dbb0b3bb09a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhaseManager
 --- !u!114 &6169343206493632569
 MonoBehaviour:
   m_ObjectHideFlags: 0

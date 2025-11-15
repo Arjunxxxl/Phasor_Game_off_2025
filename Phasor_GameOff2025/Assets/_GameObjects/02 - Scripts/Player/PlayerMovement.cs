@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     private float jumpGravity;
     private float jumpGravity_AirPhase;
     private float gravity;
+
+    private bool UseHighJump = false;
     
     // Character Controller
     private CharacterController characterController;
@@ -140,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (isFalling)
         {
-            gravity = player.phaseManager.ActivePhase == PhasesType.Air ? jumpGravity_AirPhase : jumpGravity;
+            gravity = UseHighJump ? jumpGravity_AirPhase : jumpGravity;
 
             float prefSpeed = ySpeed;
             float nextSpeed = prefSpeed + Time.unscaledDeltaTime * gravity * fallMul;
@@ -154,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            gravity = player.phaseManager.ActivePhase == PhasesType.Air ? jumpGravity_AirPhase : jumpGravity;
+            gravity = UseHighJump ? jumpGravity_AirPhase : jumpGravity;
 
             float prefSpeed = ySpeed;
             float nextSpeed = prefSpeed + Time.unscaledDeltaTime * gravity;
@@ -166,6 +168,11 @@ public class PlayerMovement : MonoBehaviour
         {
             ySpeed = -25.0f;
         }
+    }
+
+    public void SetHighJump(bool useHighJump)
+    {
+        UseHighJump = useHighJump;
     }
     
     #endregion
@@ -188,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isJumping && isGrounded && jumpInput)
         {
-            float speed = player.phaseManager.ActivePhase == PhasesType.Air ? jumpSpeed_AirPhase : jumpSpeed;
+            float speed = UseHighJump ? jumpSpeed_AirPhase : jumpSpeed;
             ySpeed = speed * 0.5f;
             isJumping = true;
             
