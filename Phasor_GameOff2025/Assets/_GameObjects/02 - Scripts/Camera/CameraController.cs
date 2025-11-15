@@ -70,8 +70,9 @@ public class CameraController : MonoBehaviour
     private void MoveRigToTarget()
     {
         Vector3 targetPos = targetT.position + rigOffset;
-        rigT.transform.position =
-            Vector3.MoveTowards(rigT.transform.position, targetPos, rigMoveSpeed * Time.deltaTime);
+        rigT.transform.position = Vector3.MoveTowards(rigT.transform.position,
+            targetPos,
+            rigMoveSpeed * Time.unscaledDeltaTime);
     }
 
     #endregion
