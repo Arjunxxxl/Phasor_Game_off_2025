@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5988712419010721769}
   - component: {fileID: 9149266644437685942}
   m_Layer: 7
-  m_Name: HangingAxe - 1
+  m_Name: HangingAxeFast - 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,9 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948dba92f814c614da3dfd92d0027553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleHangingAxe
+  isFast: 1
   minRotationAngle: {x: 0, y: 0, z: -40}
   maxRotationAngle: {x: 0, y: 0, z: 40}
-  rotationSpeed: 2.5
 --- !u!1 &8887348321246212426
 GameObject:
   m_ObjectHideFlags: 0

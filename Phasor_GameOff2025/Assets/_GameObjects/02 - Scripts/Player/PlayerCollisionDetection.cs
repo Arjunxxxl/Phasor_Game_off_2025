@@ -32,6 +32,8 @@ public class PlayerCollisionDetection : MonoBehaviour
         if ((obstacleLayer.value & (1 << other.gameObject.layer)) != 0)
         {
             ObstacleHangingAxe obstacleHangingAxe = other.GetComponent<ObstacleHangingAxe>();
+            ObstacleRotatingHammer obstacleRotatingHammer = other.GetComponent<ObstacleRotatingHammer>();
+            
             if (obstacleHangingAxe != null)
             {
                 bool isMovingToRight = obstacleHangingAxe.IsMovingToRight;
@@ -40,6 +42,16 @@ public class PlayerCollisionDetection : MonoBehaviour
                 direction.y = 3.0f;
 
                 Vector3 hitVelocity = direction * Constants.Player.HangingAxeHitSpeed;
+                
+                player.playerMovement.AddVelocityOnObstacle(hitVelocity);
+            }
+            else if (obstacleRotatingHammer != null)
+            {
+                Vector3 direction = obstacleRotatingHammer.GetPerpendicular();
+                direction.Normalize();
+                direction.y = 3.0f;
+
+                Vector3 hitVelocity = direction * Constants.Player.RotatingHammerHitSpeed;
                 
                 player.playerMovement.AddVelocityOnObstacle(hitVelocity);
             }

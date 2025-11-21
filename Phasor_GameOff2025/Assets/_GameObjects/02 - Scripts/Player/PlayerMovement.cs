@@ -259,33 +259,34 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateObstacleHitSpeed()
     {
-        if (obstacleHitVelocity.x > 0)
-        {
-            obstacleHitVelocity.x += Time.unscaledDeltaTime * Constants.Player.ObstacleHitSpeedDecrement.x;
+        float dt = Time.unscaledDeltaTime;
 
-            if (obstacleHitVelocity.x <= 0)
+        obstacleHitVelocity.x = MoveTowardsZero(obstacleHitVelocity.x, Constants.Player.ObstacleHitSpeedDecrement.x * dt);
+        obstacleHitVelocity.y = MoveTowardsZero(obstacleHitVelocity.y, Constants.Player.ObstacleHitSpeedDecrement.y * dt);
+        obstacleHitVelocity.z = MoveTowardsZero(obstacleHitVelocity.z, Constants.Player.ObstacleHitSpeedDecrement.z * dt);
+    } 
+    
+    private float MoveTowardsZero(float value, float dec)
+    {
+        if (value > 0)
+        {
+            value -= dec;
+            
+            if (value < 0)
             {
-                obstacleHitVelocity.x = 0;
+                value = 0;
             }
         }
-        if (obstacleHitVelocity.y > 0)
+        else if (value < 0)
         {
-            obstacleHitVelocity.y += Time.unscaledDeltaTime * Constants.Player.ObstacleHitSpeedDecrement.y;
-
-            if (obstacleHitVelocity.y <= 0)
+            value += dec;
+            
+            if (value > 0)
             {
-                obstacleHitVelocity.y = 0;
+                value = 0;
             }
         }
-        if (obstacleHitVelocity.z > 0)
-        {
-            obstacleHitVelocity.z += Time.unscaledDeltaTime * Constants.Player.ObstacleHitSpeedDecrement.z;
-
-            if (obstacleHitVelocity.z <= 0)
-            {
-                obstacleHitVelocity.z = 0;
-            }
-        }
+        return value;
     }
 
     #endregion

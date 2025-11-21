@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class ObstacleHangingAxe : MonoBehaviour
 {
+    [SerializeField] private bool isFast;
     [SerializeField] private Vector3 minRotationAngle;
     [SerializeField] private Vector3 maxRotationAngle;
-    [SerializeField] private float rotationSpeed;
+    private float rotationSpeed;
     private Quaternion minRotation;
     private Quaternion maxRotation;
     
@@ -16,6 +17,9 @@ public class ObstacleHangingAxe : MonoBehaviour
     {
         minRotation = Quaternion.Euler(minRotationAngle);
         maxRotation = Quaternion.Euler(maxRotationAngle);
+        
+        rotationSpeed = isFast ? 
+            Constants.ObstacleData.HangingAxeRotationSpeed_Fast : Constants.ObstacleData.HangingAxeRotationSpeed_Normal;
     }
 
     // Update is called once per frame
