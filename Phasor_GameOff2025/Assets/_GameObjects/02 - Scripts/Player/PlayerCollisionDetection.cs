@@ -6,6 +6,8 @@ public class PlayerCollisionDetection : MonoBehaviour
     [Header("Layer")] 
     [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private LayerMask checkPointLayer;
+    [SerializeField] private LayerMask inventoryItemLayer;
+    [SerializeField] private LayerMask doorLayer;
     
     // Ref
     private Player player;
@@ -62,6 +64,40 @@ public class PlayerCollisionDetection : MonoBehaviour
             if (checkPoint != null)
             {
                 checkPointManager.UpdatedLastCheckPoint(checkPoint);
+            }
+        }
+        else if ((inventoryItemLayer.value & (1 << other.gameObject.layer)) != 0)
+        {
+            InventoryItem inventoryItem = other.GetComponent<InventoryItem>();
+            if (inventoryItem != null)
+            {
+                InventoryItemType itemType = inventoryItem.ItemType;
+                player.inventory.AddItemToInventory(itemType, 1);
+                
+                inventoryItem.OnItemPickedUp();
+            }
+        }
+        else if ((doorLayer.value & (1 << other.gameObject.layer)) != 0)
+        {
+            ObstacleDoor door = other.GetComponent<ObstacleDoor>();
+            if (door != null)
+            {
+                bool isOpen = door.IsDoorOpen;
+
+                if (!isOpen)
+                {
+                    int keyAmtInInventory = player.inventory.GetAmount(InventoryItemType.Key);
+
+                    if (keyAmtInInventory > 0)
+                    {
+                        door.OpenDoor();
+                        player.inventory.RemoveItemFromInventory(InventoryItemType.Key, 1);
+                    }
+                    else
+                    {
+                        // Show Key is requied message in ui and ask player to find he key
+                    }
+                }
             }
         }
     }

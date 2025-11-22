@@ -1235,6 +1235,12 @@ MonoBehaviour:
   checkPointLayer:
     serializedVersion: 2
     m_Bits: 256
+  inventoryItemLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &5948361408805964842
 GameObject:
   m_ObjectHideFlags: 0

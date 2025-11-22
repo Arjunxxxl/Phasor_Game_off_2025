@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     
     // Ref Others
     public PhaseManager phaseManager { get; private set; }
+    public Inventory inventory { get; private set; }
 
     #region Singleton
 
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour
         playerCollisionDetection = GetComponent<PlayerCollisionDetection>();
         
         phaseManager = PhaseManager.Instance;
+        inventory = Inventory.Instance;
         
         playerMovement.SetUp(this);
         playerAnimator.SetUp();
