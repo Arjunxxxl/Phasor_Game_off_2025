@@ -40,8 +40,9 @@ public class UserInput : MonoBehaviour
 
     private void GetPlayerMovementInput()
     {
-        moveInput.x = Input.GetAxis("Horizontal");
-        moveInput.y = Input.GetAxis("Vertical");
+        moveInput = Vector2.zero;
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
         
         jumpInput = Input.GetButton("Jump");
