@@ -1241,6 +1241,9 @@ MonoBehaviour:
   doorLayer:
     serializedVersion: 2
     m_Bits: 2048
+  checkPointInfoCollider:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &5948361408805964842
 GameObject:
   m_ObjectHideFlags: 0

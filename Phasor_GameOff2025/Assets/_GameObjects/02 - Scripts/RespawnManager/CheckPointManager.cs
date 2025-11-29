@@ -9,6 +9,7 @@ public class CheckPointManager : MonoBehaviour
     // Player
     private Player player;
     private CameraController cameraController;
+    private UiManager uiManager;
     
     #region Singleton
 
@@ -28,9 +29,10 @@ public class CheckPointManager : MonoBehaviour
 
     #endregion
 
-    private void Start()
+    public void SetUp()
     {
         player = Player.Instance;
+        uiManager = UiManager.Instance;
         cameraController = CameraController.Instance;
     }
 
@@ -47,6 +49,11 @@ public class CheckPointManager : MonoBehaviour
         if (checkPointType == CheckPointType.LevelEnd)
         {
             //TODO: Move to next level
+        }
+        else
+        {
+            checkPoint.PlayCheckPointActivatedEfx();
+            uiManager.GameplayUi.ShowCheckPointReachUi();
         }
     }
 

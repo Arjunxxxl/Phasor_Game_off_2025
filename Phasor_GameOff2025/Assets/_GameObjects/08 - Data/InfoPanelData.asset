@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InfoPanelData
   infoPanelData:
   - Title: Check Point
-    Description: The circular platform is a checkpoint. Stand on the platform to
-      activate the checkpoint. If you fall off the level, you will respawn at the
-      last checkpoint.
+    Description: The circular platform in middle is a checkpoint. Stand on the platform
+      to activate the checkpoint. If you fall off the level, you will respawn at
+      the last checkpoint.
   - Title: Time Shift
     Description: You have received the Time Shift phase. Press Numpad 1 to activate
       it and slow down time. Use this phase to clear obstacles.

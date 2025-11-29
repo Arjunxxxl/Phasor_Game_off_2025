@@ -30,15 +30,9 @@ public class Player : MonoBehaviour
 
     #endregion
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        SetUp();
-    }
-
     #region SetUp
 
-    private void SetUp()
+    public void SetUp()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimator = GetComponent<PlayerAnimator>();
@@ -51,8 +45,6 @@ public class Player : MonoBehaviour
         playerAnimator.SetUp();
         playerCollisionDetection.SetUp(this);
         
-        phaseManager.SetUp(this);
-
         Vector3 spawnPos = CheckPointManager.Instance.GetLastCheckPointSpawnPos();
         transform.position = spawnPos;
     }

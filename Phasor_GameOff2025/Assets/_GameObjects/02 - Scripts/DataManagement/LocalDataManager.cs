@@ -64,6 +64,11 @@ public class LocalDataManager : MonoBehaviour
         this.checkPointInfoShown = isShown;
         PlayerPrefs.SetInt(Constants.LocalData.CheckPointInfoShown_Tag, isShown ? 1 : 0);
     }
+
+    public bool IsCheckPointInfoShown()
+    {
+        return checkPointInfoShown;
+    }
     
     #endregion
     

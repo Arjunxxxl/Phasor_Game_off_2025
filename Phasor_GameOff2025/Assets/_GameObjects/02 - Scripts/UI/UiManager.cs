@@ -3,7 +3,10 @@ using UnityEngine;
 public class UiManager : MonoBehaviour
 {
     [Header("Ui Refs")]
+    [SerializeField] private GameplayUi gameplayUi;
     [SerializeField] private InfoPanel infoPanel;
+    
+    public GameplayUi GameplayUi => gameplayUi;
     
     #region Singleton
     
@@ -25,6 +28,7 @@ public class UiManager : MonoBehaviour
 
     public void SetUp()
     {
+        gameplayUi.SetUp();
         infoPanel.SetUp();
     }
 }

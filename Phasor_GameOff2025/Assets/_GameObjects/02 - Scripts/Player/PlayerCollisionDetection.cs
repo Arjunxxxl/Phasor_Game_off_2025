@@ -8,6 +8,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     [SerializeField] private LayerMask checkPointLayer;
     [SerializeField] private LayerMask inventoryItemLayer;
     [SerializeField] private LayerMask doorLayer;
+    [SerializeField] private LayerMask checkPointInfoCollider;
     
     // Ref
     private Player player;
@@ -99,6 +100,10 @@ public class PlayerCollisionDetection : MonoBehaviour
                     }
                 }
             }
+        }
+        else if ((checkPointInfoCollider.value & (1 << other.gameObject.layer)) != 0)
+        {
+            InfoPanelManager.Instance.ShowInfoPanel(true, PhasesType.Unknown);
         }
     }
 

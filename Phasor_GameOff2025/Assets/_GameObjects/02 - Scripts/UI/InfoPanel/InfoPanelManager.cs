@@ -11,6 +11,7 @@ public class InfoPanelManager : MonoBehaviour
     
     // Ref
     private LocalDataManager localDataManager;
+    private Player player;
     
     #region Singleton
     
@@ -30,15 +31,21 @@ public class InfoPanelManager : MonoBehaviour
 
     #endregion
 
-    private void Start()
+    public void SetUp()
     {
         localDataManager = LocalDataManager.Instance;
+        player = Player.Instance;
     }
 
     public void ShowInfoPanel(bool isCheckPointInfoPanel, PhasesType infoPanelPhaseType)
     {
         this.isCheckPointInfoPanel = isCheckPointInfoPanel;
         this.infoPanelPhaseType = infoPanelPhaseType;
+
+        if (this.isCheckPointInfoPanel && localDataManager.IsCheckPointInfoShown())
+        {
+            return;
+        }
         
         InfoPanelData.Data data = null;
         
@@ -53,6 +60,9 @@ public class InfoPanelManager : MonoBehaviour
         
         infoPanel.SetPanelData(data);
         infoPanel.ShowMenu();
+        
+        Time.timeScale = 0.0f;
+        player.playerMovement.StopAllMovement(true);
     }
 
     public void InfoPanelHidden()
@@ -61,5 +71,8 @@ public class InfoPanelManager : MonoBehaviour
         {
             localDataManager.SaveCheckPointInfoShown(true);
         }
+        
+        Time.timeScale = 1.0f;
+        player.playerMovement.StopAllMovement(false);
     }
 }
