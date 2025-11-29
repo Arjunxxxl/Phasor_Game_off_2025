@@ -5,7 +5,7 @@ using UnityEngine;
 public class PhaseManager : MonoBehaviour
 {
     // Phases Data
-    private PhasesType activePhase;
+    private PhasesType activePhase = PhasesType.Unknown;
     private List<PhasesType> availablePhases;
     
     // Phase Active Data
@@ -70,6 +70,16 @@ public class PhaseManager : MonoBehaviour
     {
         availablePhases = new List<PhasesType>();
         availablePhases.Add(PhasesType.Default);
+
+        for (int idx = 0; idx < System.Enum.GetValues(typeof(PhasesType)).Length; idx++)
+        {
+            PhasesType phasesType = (PhasesType) idx;
+            bool isUnlocked = localDataManager.IsPhasesUnlocked(phasesType);
+            if (isUnlocked)
+            {
+                availablePhases.Add(phasesType);
+            }
+        }
         /*availablePhases.Add(PhasesType.TimeShift);
         availablePhases.Add(PhasesType.Air);
         availablePhases.Add(PhasesType.Mirror);*/

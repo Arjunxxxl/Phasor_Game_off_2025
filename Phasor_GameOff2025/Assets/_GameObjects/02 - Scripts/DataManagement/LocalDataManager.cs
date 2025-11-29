@@ -96,17 +96,17 @@ public class LocalDataManager : MonoBehaviour
         }
     }
     
-    public bool IsPhasesUnlockedInfoShown(PhasesType phasesType)
+    public bool IsPhasesUnlocked(PhasesType phasesType)
     {
-        bool shown = false;
+        bool isUnlocked = false;
         switch (phasesType)
         {
             case PhasesType.TimeShift:
-                shown = timeShiftInfoShown;
+                isUnlocked = timeShiftInfoShown;
                 break;
         }
         
-        return shown;
+        return isUnlocked;
     }
     
     #endregion
