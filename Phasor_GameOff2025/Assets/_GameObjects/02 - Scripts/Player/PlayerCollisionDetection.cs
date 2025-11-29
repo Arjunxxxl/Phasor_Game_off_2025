@@ -10,6 +10,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     [SerializeField] private LayerMask doorLayer;
     [SerializeField] private LayerMask checkPointInfoCollider;
     [SerializeField] private LayerMask phasePickUpLayer;
+    [SerializeField] private LayerMask diamondLayer;
     
     // Ref
     private Player player;
@@ -115,6 +116,10 @@ public class PlayerCollisionDetection : MonoBehaviour
             {
                 phasePickUp.OnPhasePickedUp(player);
             }
+        }
+        else if ((diamondLayer.value & (1 << other.gameObject.layer)) != 0)
+        {
+            other.gameObject.SetActive(false);
         }
     }
 
