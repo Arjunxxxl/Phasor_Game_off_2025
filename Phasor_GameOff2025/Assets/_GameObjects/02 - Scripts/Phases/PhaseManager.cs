@@ -291,10 +291,16 @@ public class PhaseManager : MonoBehaviour
         if (!availablePhases.Contains(phase))
         {
             availablePhases.Add(phase);
-            
-            infoPanelManager.ShowInfoPanel(false, phase);
             localDataManager.SavePhasesUnlocked(phase);
+
+            StartCoroutine(ShowInfoPanel(phase));
         }
+    }
+
+    private IEnumerator ShowInfoPanel(PhasesType phase)
+    {
+        yield return new WaitForSeconds(1.5f);
+        infoPanelManager.ShowInfoPanel(false, phase);
     }
 
     #endregion

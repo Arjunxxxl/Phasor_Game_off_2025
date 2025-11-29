@@ -50,6 +50,10 @@ public class CheckPointManager : MonoBehaviour
         {
             //TODO: Move to next level
         }
+        else if (checkPointType == CheckPointType.PickUp)
+        {
+            checkPoint.PlayCheckPointActivatedEfx();
+        }
         else
         {
             checkPoint.PlayCheckPointActivatedEfx();

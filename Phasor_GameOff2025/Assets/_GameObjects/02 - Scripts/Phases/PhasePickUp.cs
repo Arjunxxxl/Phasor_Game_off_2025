@@ -6,6 +6,10 @@ public class PhasePickUp : MonoBehaviour
 
     public void OnPhasePickedUp(Player player)
     {
+        ObjectPooler.Instance.SpawnFromPool(0, transform.position, Quaternion.identity);
+        ObjectPooler.Instance.SpawnFromPool(0, transform.position, Quaternion.identity);
+        player.playerEfxManager.PlayPhaseItemPickup();
+        
         player.phaseManager.AddNewPhase(phaseType);
         gameObject.SetActive(false);
     }

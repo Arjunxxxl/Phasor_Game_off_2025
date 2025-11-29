@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public PlayerMovement playerMovement { get; private set; }
     public PlayerAnimator playerAnimator { get; private set; }
     public PlayerCollisionDetection playerCollisionDetection { get; private set; }
+    public PlayerEfxManager playerEfxManager { get; private set; }
     
     // Ref Others
     public PhaseManager phaseManager { get; private set; }
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimator = GetComponent<PlayerAnimator>();
         playerCollisionDetection = GetComponent<PlayerCollisionDetection>();
+        playerEfxManager = GetComponent<PlayerEfxManager>();
         
         phaseManager = PhaseManager.Instance;
         inventory = Inventory.Instance;
