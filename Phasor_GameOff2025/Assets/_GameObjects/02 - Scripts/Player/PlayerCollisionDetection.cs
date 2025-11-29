@@ -15,6 +15,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     // Ref
     private Player player;
     private CheckPointManager checkPointManager;
+    private ObjectPooler objectPooler;
 
     private void Update()
     {
@@ -26,6 +27,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     public void SetUp(Player player)
     {
         checkPointManager = CheckPointManager.Instance;
+        objectPooler = ObjectPooler.Instance;
         
         this.player = player;
     }
@@ -119,6 +121,7 @@ public class PlayerCollisionDetection : MonoBehaviour
         }
         else if ((diamondLayer.value & (1 << other.gameObject.layer)) != 0)
         {
+            objectPooler.SpawnFromPool(1, other.transform.position, Quaternion.identity);
             other.gameObject.SetActive(false);
         }
     }
