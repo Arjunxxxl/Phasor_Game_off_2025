@@ -48,13 +48,14 @@ public class CheckPointManager : MonoBehaviour
         CheckPointType checkPointType = lastCheckPoint.CheckPointType;
         if (checkPointType == CheckPointType.LevelEnd)
         {
+            checkPoint.PlayCheckPointActivatedEfx();
             //TODO: Move to next level
         }
         else if (checkPointType == CheckPointType.PickUp)
         {
             checkPoint.PlayCheckPointActivatedEfx();
         }
-        else
+        else if (checkPointType == CheckPointType.ReSpawning)
         {
             checkPoint.PlayCheckPointActivatedEfx();
             uiManager.GameplayUi.ShowCheckPointReachUi();
