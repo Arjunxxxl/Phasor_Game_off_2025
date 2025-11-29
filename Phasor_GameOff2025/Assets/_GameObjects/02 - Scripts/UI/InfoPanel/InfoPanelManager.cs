@@ -46,6 +46,10 @@ public class InfoPanelManager : MonoBehaviour
         {
             return;
         }
+        else if (localDataManager.IsPhasesUnlockedInfoShown(infoPanelPhaseType))
+        {
+            return;
+        }
         
         InfoPanelData.Data data = null;
         

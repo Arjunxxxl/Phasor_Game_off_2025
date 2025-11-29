@@ -78,8 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a3333751fd4e24b9ab99e3570a8ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckPoint
-  checkPointType: 2
+  checkPointType: 3
   spawnT: {fileID: 7011570286428318621}
+  CheckPointActivatedEfx: {fileID: 0}
 --- !u!1 &3422969772705219366
 GameObject:
   m_ObjectHideFlags: 0

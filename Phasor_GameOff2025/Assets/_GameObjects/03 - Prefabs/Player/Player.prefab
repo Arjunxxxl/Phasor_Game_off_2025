@@ -1244,6 +1244,9 @@ MonoBehaviour:
   checkPointInfoCollider:
     serializedVersion: 2
     m_Bits: 4096
+  phasePickUpLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &5948361408805964842
 GameObject:
   m_ObjectHideFlags: 0

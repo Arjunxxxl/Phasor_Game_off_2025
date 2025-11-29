@@ -20,6 +20,8 @@ public class PhaseManager : MonoBehaviour
     // Ref
     private Player player;
     private UserInput userInput;
+    private InfoPanelManager infoPanelManager;
+    private LocalDataManager localDataManager;
     
     // Properties
     public PhasesType ActivePhase => activePhase;
@@ -53,6 +55,8 @@ public class PhaseManager : MonoBehaviour
     public void SetUp(Player player)
     {
         userInput = UserInput.Instance;
+        infoPanelManager = InfoPanelManager.Instance;
+        localDataManager = LocalDataManager.Instance;
         
         this.player = player;
 
@@ -66,9 +70,9 @@ public class PhaseManager : MonoBehaviour
     {
         availablePhases = new List<PhasesType>();
         availablePhases.Add(PhasesType.Default);
-        availablePhases.Add(PhasesType.TimeShift);
+        /*availablePhases.Add(PhasesType.TimeShift);
         availablePhases.Add(PhasesType.Air);
-        availablePhases.Add(PhasesType.Mirror);
+        availablePhases.Add(PhasesType.Mirror);*/
     }
 
     private void SetUpDataReqForPhases()
@@ -268,5 +272,20 @@ public class PhaseManager : MonoBehaviour
     
     #endregion
     
+    #endregion
+
+    #region Phase Adding
+
+    public void AddNewPhase(PhasesType phase)
+    {
+        if (!availablePhases.Contains(phase))
+        {
+            availablePhases.Add(phase);
+            
+            infoPanelManager.ShowInfoPanel(false, phase);
+            localDataManager.SavePhasesUnlocked(phase);
+        }
+    }
+
     #endregion
 }

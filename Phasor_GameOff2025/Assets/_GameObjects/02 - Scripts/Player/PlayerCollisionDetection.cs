@@ -9,6 +9,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     [SerializeField] private LayerMask inventoryItemLayer;
     [SerializeField] private LayerMask doorLayer;
     [SerializeField] private LayerMask checkPointInfoCollider;
+    [SerializeField] private LayerMask phasePickUpLayer;
     
     // Ref
     private Player player;
@@ -104,6 +105,14 @@ public class PlayerCollisionDetection : MonoBehaviour
         else if ((checkPointInfoCollider.value & (1 << other.gameObject.layer)) != 0)
         {
             InfoPanelManager.Instance.ShowInfoPanel(true, PhasesType.Unknown);
+        }
+        else if ((phasePickUpLayer.value & (1 << other.gameObject.layer)) != 0)
+        {
+            PhasePickUp phasePickUp = other.GetComponent<PhasePickUp>();
+            if (phasePickUp != null)
+            {
+                phasePickUp.OnPhasePickedUp(player);
+            }
         }
     }
 

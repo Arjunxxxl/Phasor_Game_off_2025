@@ -8226,29 +8226,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866031158}
     m_Modifications:
-    - target: {fileID: 871250665577505242, guid: ac3697fa5599a6644a0e0da3fb4fb496, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 2469172845014836608, guid: ac3697fa5599a6644a0e0da3fb4fb496, type: 3}
       propertyPath: m_Name
       value: LevelEndCheckPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 2469172845014836608, guid: ac3697fa5599a6644a0e0da3fb4fb496, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2469172845014836608, guid: ac3697fa5599a6644a0e0da3fb4fb496, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3422969772705219366, guid: ac3697fa5599a6644a0e0da3fb4fb496, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3930603928511034802, guid: ac3697fa5599a6644a0e0da3fb4fb496, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7494609195344600517, guid: ac3697fa5599a6644a0e0da3fb4fb496, type: 3}
       propertyPath: m_LocalPosition.x

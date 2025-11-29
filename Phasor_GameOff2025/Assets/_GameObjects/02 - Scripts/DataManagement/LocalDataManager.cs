@@ -96,5 +96,18 @@ public class LocalDataManager : MonoBehaviour
         }
     }
     
+    public bool IsPhasesUnlockedInfoShown(PhasesType phasesType)
+    {
+        bool shown = false;
+        switch (phasesType)
+        {
+            case PhasesType.TimeShift:
+                shown = timeShiftInfoShown;
+                break;
+        }
+        
+        return shown;
+    }
+    
     #endregion
 }

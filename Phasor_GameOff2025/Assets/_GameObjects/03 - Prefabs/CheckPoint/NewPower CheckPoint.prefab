@@ -43,6 +43,7 @@ Transform:
   - {fileID: 7599350657916337040}
   - {fileID: 4678641017653652608}
   - {fileID: 2646663850283366417}
+  - {fileID: 8861837053677798781}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2855803831948727258
@@ -78,8 +79,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a3333751fd4e24b9ab99e3570a8ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckPoint
-  checkPointType: 1
+  checkPointType: 2
   spawnT: {fileID: 6529560148174053543}
+  CheckPointActivatedEfx: {fileID: 0}
 --- !u!1 &5017069601873575237
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +885,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4191302231520346, guid: d80c1b420684dac4c8ea0404d979f12f, type: 3}
   m_PrefabInstance: {fileID: 7600021040157953994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8010074981868018919
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6905954218745908548}
+    m_Modifications:
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.307
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121109647003665534, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+      propertyPath: m_Name
+      value: PhasePickUp - TimeShift
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+--- !u!4 &8861837053677798781 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1572338017226496410, guid: 0b4fe17cf148935468f4b5874c1e81a2, type: 3}
+  m_PrefabInstance: {fileID: 8010074981868018919}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9108040309147606154
 PrefabInstance:
