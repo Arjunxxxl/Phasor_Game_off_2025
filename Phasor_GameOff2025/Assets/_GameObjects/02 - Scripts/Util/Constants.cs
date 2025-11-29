@@ -26,4 +26,13 @@ public static class Constants
         public static readonly float RotatingHammerSpeed_Normal = 100f;
         public static readonly float RotatingHammerSpeed_Fast = 300f;
     }
+
+    public static class LocalData
+    {
+        public static readonly string LevelNumber_Tag = "LevelNumber";
+        public static readonly string CheckPointInfoShown_Tag = "CheckPointInfoShown";
+        public static readonly string TimeShiftInfoShown_Tag = "TimeShiftInfoShown";
+        public static readonly string AirInfoShown_Tag = "AirInfoShown";
+        public static readonly string TotalPhasesUnlocked_Tag = "TotalPhasesUnlocked";
+    }
 }
