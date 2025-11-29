@@ -76,6 +76,8 @@ public class PlayerCollisionDetection : MonoBehaviour
                 InventoryItemType itemType = inventoryItem.ItemType;
                 player.inventory.AddItemToInventory(itemType, 1);
                 
+                player.playerEfxManager.PlayItemPickup();
+                
                 inventoryItem.OnItemPickedUp();
             }
         }

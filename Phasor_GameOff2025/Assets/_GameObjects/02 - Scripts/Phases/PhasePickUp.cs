@@ -8,7 +8,7 @@ public class PhasePickUp : MonoBehaviour
     {
         ObjectPooler.Instance.SpawnFromPool(0, transform.position, Quaternion.identity);
         ObjectPooler.Instance.SpawnFromPool(0, transform.position, Quaternion.identity);
-        player.playerEfxManager.PlayPhaseItemPickup();
+        player.playerEfxManager.PlayItemPickup();
         
         player.phaseManager.AddNewPhase(phaseType);
         gameObject.SetActive(false);

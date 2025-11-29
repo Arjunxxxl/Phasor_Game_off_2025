@@ -5,7 +5,7 @@ public class PlayerEfxManager : MonoBehaviour
     [Header("Efx")]
     [SerializeField] private ParticleSystem phaseItemPickupEfx;
     
-    public void PlayPhaseItemPickup()
+    public void PlayItemPickup()
     {
         phaseItemPickupEfx.Play();
     }
