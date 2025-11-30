@@ -6,9 +6,11 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameplayUi gameplayUi;
     [SerializeField] private GameOverUi gameOverUi;
     [SerializeField] private InfoPanel infoPanel;
+    [SerializeField] private PauseUi pauseUi;
     
     public GameplayUi GameplayUi => gameplayUi;
     public GameOverUi GameOverUi => gameOverUi;
+    public PauseUi PauseUi => pauseUi;
     
     #region Singleton
     
@@ -33,5 +35,6 @@ public class UiManager : MonoBehaviour
         gameplayUi.SetUp();
         gameOverUi.SetUp();
         infoPanel.SetUp();
+        pauseUi.SetUp();
     }
 }

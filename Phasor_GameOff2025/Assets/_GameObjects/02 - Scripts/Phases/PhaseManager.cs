@@ -17,6 +17,9 @@ public class PhaseManager : MonoBehaviour
     private List<BoxCollider> LightBeamColliders = new List<BoxCollider>();
     private readonly string AstralPlaneTag = "AstralPlane";
     
+    // Data
+    private bool isGamePaused = false;
+    
     // Ref
     private Player player;
     private UserInput userInput;
@@ -46,6 +49,11 @@ public class PhaseManager : MonoBehaviour
     
     private void Update()
     {
+        if (isGamePaused)
+        {
+            return;
+        }
+        
         ReadPhaseInput();
         TickPhaseCoolDownTimer();
     }
@@ -60,6 +68,8 @@ public class PhaseManager : MonoBehaviour
         
         this.player = player;
 
+        isGamePaused = false;
+        
         LoadAvailablePhases();
         SetUpDataReqForPhases();
 
@@ -301,6 +311,20 @@ public class PhaseManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         infoPanelManager.ShowInfoPanel(false, phase);
+    }
+
+    #endregion
+
+    #region Pausing Game
+
+    public void HandleGamePause(bool isPaused)
+    {
+        isGamePaused = isPaused;
+        
+        if (!isPaused && activePhase == PhasesType.TimeShift)
+        {
+            EnableTimeShiftEffect();
+        }
     }
 
     #endregion
