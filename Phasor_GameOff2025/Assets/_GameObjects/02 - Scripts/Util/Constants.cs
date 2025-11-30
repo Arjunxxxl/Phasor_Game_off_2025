@@ -31,11 +31,17 @@ public static class Constants
 
     public static class LocalData
     {
-        public static readonly string LevelNumber_Tag = "LevelNumber";
+        public static readonly string LevelName_Tag = "LevelNumber";
         public static readonly string CheckPointInfoShown_Tag = "CheckPointInfoShown";
         public static readonly string HeartsLeft_Tag = "HeartsLeft";
         public static readonly string TimeShiftInfoShown_Tag = "TimeShiftInfoShown";
         public static readonly string AirInfoShown_Tag = "AirInfoShown";
         public static readonly string TotalPhasesUnlocked_Tag = "TotalPhasesUnlocked";
+    }
+    
+    public static class SceneData
+    {
+        public static readonly string StartingLevelName = "StartingScene";
+        public static readonly string OutroLevelName = "OutroScene";
     }
 }

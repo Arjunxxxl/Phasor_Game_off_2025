@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class LevelProgressionManager : MonoBehaviour
 {
     [Header("Scene Names")]
-    [SerializeField] private string introScene;
-    [SerializeField] private string outroScene;
     [SerializeField] private List<string> levelScenes;
+    private readonly string introLevel = Constants.SceneData.StartingLevelName;
+    private readonly string outroLevel = Constants.SceneData.OutroLevelName;
 
     private string curSceneName;
     private string nextSceneName;
+    
+    private LocalDataManager localDataManager;
     
     #region Singleton
 
@@ -33,15 +35,23 @@ public class LevelProgressionManager : MonoBehaviour
     
     private void Start()
     {
+        localDataManager = LocalDataManager.Instance;
+        
         curSceneName = SceneManager.GetActiveScene().name;
 
-        if (curSceneName == introScene)
+        if (curSceneName == introLevel)
         {
-            nextSceneName = levelScenes[0];
+            string savedLevelName = localDataManager.GetLevelName();
+
+            nextSceneName = savedLevelName == Constants.SceneData.StartingLevelName ? levelScenes[0] : savedLevelName;
         }
         else if (curSceneName == levelScenes[^1])
         {
-            nextSceneName = outroScene;
+            nextSceneName = outroLevel;
+        }
+        else if (curSceneName == outroLevel)
+        {
+            nextSceneName = Constants.SceneData.StartingLevelName;
         }
         else
         {
@@ -52,6 +62,8 @@ public class LevelProgressionManager : MonoBehaviour
                     nextSceneName = levelScenes[idx + 1];
                 }
             }
+            
+            localDataManager.SaveLevelNameData(curSceneName);
         }
 
         ExitLoadingScreen();
@@ -60,6 +72,11 @@ public class LevelProgressionManager : MonoBehaviour
     public void LoadFirstLevel()
     {
         StartCoroutine(ShowLoadingScreenAndLoadNextLevelAfterDelay(levelScenes[0], 0.0f));
+    }
+
+    public void LoadLevelFromStartingLevel()
+    {
+        StartCoroutine(ShowLoadingScreenAndLoadNextLevelAfterDelay(nextSceneName, 0.0f));
     }
     
     public void LoadNextLevel()

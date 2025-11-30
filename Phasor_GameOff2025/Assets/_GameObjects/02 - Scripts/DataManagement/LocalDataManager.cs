@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LocalDataManager : MonoBehaviour
 {
-    private int levelNumber = 0;
+    private string levelName = "";
     private int heartsLeft = 0;
     private bool checkPointInfoShown = false;
     private bool timeShiftInfoShown = false;
@@ -33,7 +33,7 @@ public class LocalDataManager : MonoBehaviour
 
     private void LoadAllData()
     {
-        LoadLevelNumberData();
+        LoadLevelNameData();
         LoadHeartLeftData();
         LoadCheckPointInfoData();
         LoadPhasesData();
@@ -41,15 +41,20 @@ public class LocalDataManager : MonoBehaviour
     
     #region Level
 
-    private void LoadLevelNumberData()
+    private void LoadLevelNameData()
     {
-        levelNumber = PlayerPrefs.GetInt(Constants.LocalData.LevelNumber_Tag, 0);
+        levelName = PlayerPrefs.GetString(Constants.LocalData.LevelName_Tag, Constants.SceneData.StartingLevelName);
     }
 
-    public void SaveLevelNumberData(int levelNumber)
+    public void SaveLevelNameData(string levelName)
     {
-        this.levelNumber = levelNumber;
-        PlayerPrefs.SetInt(Constants.LocalData.LevelNumber_Tag, levelNumber);
+        this.levelName = levelName;
+        PlayerPrefs.SetString(Constants.LocalData.LevelName_Tag, levelName);
+    }
+
+    public string GetLevelName()
+    {
+        return levelName;
     }
     
     #endregion
