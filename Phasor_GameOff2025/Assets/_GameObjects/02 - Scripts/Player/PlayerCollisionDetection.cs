@@ -18,6 +18,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     private DiamondManager diamondManager;
     private HeartManager heartManager;
     private ObjectPooler objectPooler;
+    private CameraShake cameraShake;
 
     private void Update()
     {
@@ -32,6 +33,7 @@ public class PlayerCollisionDetection : MonoBehaviour
         diamondManager = DiamondManager.Instance;
         heartManager = HeartManager.Instance;
         objectPooler = ObjectPooler.Instance;
+        cameraShake = CameraShake.Instance;
         
         this.player = player;
     }
@@ -62,6 +64,8 @@ public class PlayerCollisionDetection : MonoBehaviour
                     player.SetIsDead(true);
                     gameObject.SetActive(false);
                 }
+                
+                cameraShake.ShakeCameraOnObstacleHit();
             }
             else if (obstacleRotatingHammer != null)
             {
@@ -79,6 +83,8 @@ public class PlayerCollisionDetection : MonoBehaviour
                     player.SetIsDead(true);
                     gameObject.SetActive(false);
                 }
+                
+                cameraShake.ShakeCameraOnObstacleHit();
             }
         }
         else if ((checkPointLayer.value & (1 << other.gameObject.layer)) != 0)

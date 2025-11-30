@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     
     // Grounded Data
     private bool isGrounded;
+    private bool wasGrounded;
     
     // Gravity Data
     private float groundedGravity = -0.5f;
@@ -44,9 +45,10 @@ public class PlayerMovement : MonoBehaviour
     // Character Controller
     private CharacterController characterController;
     
-    // Player
+    // Ref
     private Player player;
     private UserInput userInput;
+    private CameraShake cameraShake;
     
     // Update is called once per frame
     void Update()
@@ -75,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         this.player = player;
 
         userInput = UserInput.Instance;
+        cameraShake = CameraShake.Instance;
         
         characterController = GetComponent<CharacterController>();
         
@@ -82,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         gravity = groundedGravity;
 
         CalcJumpData();
+        SetUpGroundDetection();
     }
 
     #endregion
@@ -202,13 +206,17 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             
             player.playerAnimator.PlayJumpAnimation();
+            player.playerAnimator.PlayJumpTween();
         }
-        else if (isGrounded)
+        else if (isGrounded && !wasGrounded)
         {
             isJumping = false;
             
             player.playerAnimator.StopJumpAnimation();
             player.playerAnimator.StopFallAnimation();
+            player.playerAnimator.PlayLandTween();
+            
+            cameraShake.ShakeCameraForLanding();
         }
     }
 
@@ -216,8 +224,15 @@ public class PlayerMovement : MonoBehaviour
 
     #region Ground Detection
 
+    private void SetUpGroundDetection()
+    {
+        wasGrounded = true;
+        isGrounded = characterController.isGrounded;
+    }
+    
     private void DetectGround()
     {
+        wasGrounded = isGrounded;
         isGrounded = characterController.isGrounded;
     }
 
@@ -299,6 +314,8 @@ public class PlayerMovement : MonoBehaviour
     {
         return containerGo.transform.forward;
     }
+
+    public float JumpMaxDuration => maxJumpTime;
 
     #endregion
 }

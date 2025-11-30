@@ -523,6 +523,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6049249345799880205}
+  - component: {fileID: 4960530269659870179}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -540,13 +541,310 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 0.875, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 82331388214485961}
   - {fileID: 4880869344906956364}
   m_Father: {fileID: 2505225571001329071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4960530269659870179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953788205330585517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14921c451223e4c46ba35378bd127129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tween
+  canPlayMultipleTween: 0
+  disableGameObjectOnComplete: 0
+  tweenCollection:
+  - tweenName: Jump
+    tweenType: 2
+    useTweenInitialValue: 1
+    tdMove:
+      isLocalSpace: 0
+      tweenStartValue: {x: 0, y: 0, z: 0}
+      tweenEndValue: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      isSnapping: 0
+      numOfJumps: 0
+      jumpPower: 0
+      easeType: 0
+    tdRotate:
+      isLocalSpace: 0
+      tweenStartValue: {x: 0, y: 0, z: 0}
+      tweenEndValue: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      rotateMode: 0
+      easeType: 0
+    tdScale:
+      tweenStartValue: {x: 1, y: 1, z: 1}
+      tweenEndValue: {x: 0.85, y: 1.2, z: 0.85}
+      tweenDuration: 0.75
+      tweenDelay: 0
+      easeType: 7
+    tdPunch:
+      type: 0
+      puch: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      vibrato: 0
+      elasticity: 0
+      isSnapping: 0
+      easeType: 0
+    tdShake:
+      type: 0
+      strength: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      vibrato: 0
+      randomness: 0
+      isSnapping: 0
+      fadeOut: 0
+      shakeRandomnessMode: 0
+      easeType: 0
+    tdPath:
+      isLocalSpace: 0
+      waypoints: []
+      tweenDuration: 0
+      tweenDelay: 0
+      pathType: 0
+      pathMode: 0
+      resolution: 0
+      gizmoColor: {r: 0, g: 0, b: 0, a: 0}
+      easeType: 0
+    tdSpriteRendererColor:
+      tweenStartValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenEndValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdSpriteRendererFade:
+      tweenStartValue: 0
+      tweenEndValue: 0
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdMaterialColor:
+      tweenEndValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdMaterialFade:
+      tweenEndValue: 0
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tweenEvent: 2
+    OnStart:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - tweenName: Land
+    tweenType: 2
+    useTweenInitialValue: 1
+    tdMove:
+      isLocalSpace: 0
+      tweenStartValue: {x: 0, y: 0, z: 0}
+      tweenEndValue: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      isSnapping: 0
+      numOfJumps: 0
+      jumpPower: 0
+      easeType: 0
+    tdRotate:
+      isLocalSpace: 0
+      tweenStartValue: {x: 0, y: 0, z: 0}
+      tweenEndValue: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      rotateMode: 0
+      easeType: 0
+    tdScale:
+      tweenStartValue: {x: 0.85, y: 1.2, z: 0.85}
+      tweenEndValue: {x: 1.1, y: 0.9, z: 1.1}
+      tweenDuration: 0.175
+      tweenDelay: 0
+      easeType: 5
+    tdPunch:
+      type: 0
+      puch: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      vibrato: 0
+      elasticity: 0
+      isSnapping: 0
+      easeType: 0
+    tdShake:
+      type: 0
+      strength: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      vibrato: 0
+      randomness: 0
+      isSnapping: 0
+      fadeOut: 0
+      shakeRandomnessMode: 0
+      easeType: 0
+    tdPath:
+      isLocalSpace: 0
+      waypoints: []
+      tweenDuration: 0
+      tweenDelay: 0
+      pathType: 0
+      pathMode: 0
+      resolution: 0
+      gizmoColor: {r: 0, g: 0, b: 0, a: 0}
+      easeType: 0
+    tdSpriteRendererColor:
+      tweenStartValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenEndValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdSpriteRendererFade:
+      tweenStartValue: 0
+      tweenEndValue: 0
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdMaterialColor:
+      tweenEndValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdMaterialFade:
+      tweenEndValue: 0
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tweenEvent: 2
+    OnStart:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4960530269659870179}
+          m_TargetAssemblyTypeName: Tween, Assembly-CSharp
+          m_MethodName: PlayTween
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: LandSettle
+            m_BoolArgument: 0
+          m_CallState: 2
+  - tweenName: LandSettle
+    tweenType: 2
+    useTweenInitialValue: 1
+    tdMove:
+      isLocalSpace: 0
+      tweenStartValue: {x: 0, y: 0, z: 0}
+      tweenEndValue: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      isSnapping: 0
+      numOfJumps: 0
+      jumpPower: 0
+      easeType: 0
+    tdRotate:
+      isLocalSpace: 0
+      tweenStartValue: {x: 0, y: 0, z: 0}
+      tweenEndValue: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      rotateMode: 0
+      easeType: 0
+    tdScale:
+      tweenStartValue: {x: 1.1, y: 0.9, z: 1.1}
+      tweenEndValue: {x: 1, y: 1, z: 1}
+      tweenDuration: 0.15
+      tweenDelay: 0
+      easeType: 6
+    tdPunch:
+      type: 0
+      puch: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      vibrato: 0
+      elasticity: 0
+      isSnapping: 0
+      easeType: 0
+    tdShake:
+      type: 0
+      strength: {x: 0, y: 0, z: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      vibrato: 0
+      randomness: 0
+      isSnapping: 0
+      fadeOut: 0
+      shakeRandomnessMode: 0
+      easeType: 0
+    tdPath:
+      isLocalSpace: 0
+      waypoints: []
+      tweenDuration: 0
+      tweenDelay: 0
+      pathType: 0
+      pathMode: 0
+      resolution: 0
+      gizmoColor: {r: 0, g: 0, b: 0, a: 0}
+      easeType: 0
+    tdSpriteRendererColor:
+      tweenStartValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenEndValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdSpriteRendererFade:
+      tweenStartValue: 0
+      tweenEndValue: 0
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdMaterialColor:
+      tweenEndValue: {r: 0, g: 0, b: 0, a: 0}
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tdMaterialFade:
+      tweenEndValue: 0
+      tweenDuration: 0
+      tweenDelay: 0
+      easeType: 0
+    tweenEvent: 2
+    OnStart:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5915288420615681864}
+          m_TargetAssemblyTypeName: PlayerAnimator, Assembly-CSharp
+          m_MethodName: ResetScale
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2221319428391496771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f1e27b41328c3418b9d448caf39afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
+  ContainerGo: {fileID: 1953788205330585517}
+  jumpLandTween: {fileID: 4960530269659870179}
 --- !u!114 &6169343206493632569
 MonoBehaviour:
   m_ObjectHideFlags: 0

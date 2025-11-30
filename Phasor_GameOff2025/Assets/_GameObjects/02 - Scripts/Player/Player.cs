@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         inventory = Inventory.Instance;
         
         playerMovement.SetUp(this);
-        playerAnimator.SetUp();
+        playerAnimator.SetUp(this);
         playerCollisionDetection.SetUp(this);
         
         Vector3 spawnPos = CheckPointManager.Instance.GetLastCheckPointSpawnPos();
