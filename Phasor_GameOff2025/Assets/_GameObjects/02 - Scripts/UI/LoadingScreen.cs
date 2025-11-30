@@ -5,6 +5,7 @@ public enum LoadingScreenState
 {
     Unknown,
     Hidden,
+    Visible,
     Enter,
     Wait,
     Exit
@@ -40,7 +41,7 @@ public class LoadingScreen : MonoBehaviour
         inScreenPos = 0.0f;
         outScreenPos = Screen.width + 10;
         
-        SetCurState(LoadingScreenState.Hidden);
+        SetCurState(LoadingScreenState.Visible);
     }
 
     private void Update()
@@ -64,6 +65,13 @@ public class LoadingScreen : MonoBehaviour
             
             bgRectT.gameObject.SetActive(false);
         }
+        else if (newState == LoadingScreenState.Visible)
+        {
+            bgRectT.offsetMin = new Vector2(0.0f, 0.0f);
+            bgRectT.offsetMax = new Vector2(0.0f, 0.0f);
+            
+            bgRectT.gameObject.SetActive(true);
+        }
         else if (newState == LoadingScreenState.Enter)
         {
             bgRectT.offsetMin = new Vector2(outScreenPos, 0.0f);
@@ -73,6 +81,9 @@ public class LoadingScreen : MonoBehaviour
         }
         else if (newState == LoadingScreenState.Wait)
         {
+            bgRectT.offsetMin = new Vector2(0.0f, 0.0f);
+            bgRectT.offsetMax = new Vector2(0.0f, 0.0f);
+            
             bgRectT.gameObject.SetActive(true);
         }
         else if (newState == LoadingScreenState.Exit)
@@ -132,4 +143,14 @@ public class LoadingScreen : MonoBehaviour
     }
 
     #endregion
+
+    public void TriggerLoadingScreen()
+    {
+        SetCurState(LoadingScreenState.Enter);
+    }
+
+    public void ExitLoadingScreen()
+    {
+        SetCurState(LoadingScreenState.Wait);
+    }
 }

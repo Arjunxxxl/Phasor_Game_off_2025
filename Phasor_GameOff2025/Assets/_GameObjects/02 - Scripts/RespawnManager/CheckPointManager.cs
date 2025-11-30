@@ -10,6 +10,7 @@ public class CheckPointManager : MonoBehaviour
     private Player player;
     private CameraController cameraController;
     private UiManager uiManager;
+    private LevelProgressionManager levelProgressionManager;
     
     #region Singleton
 
@@ -34,6 +35,7 @@ public class CheckPointManager : MonoBehaviour
         player = Player.Instance;
         uiManager = UiManager.Instance;
         cameraController = CameraController.Instance;
+        levelProgressionManager = LevelProgressionManager.Instance;
     }
 
     public void UpdatedLastCheckPoint(CheckPoint checkPoint)
@@ -48,8 +50,10 @@ public class CheckPointManager : MonoBehaviour
         CheckPointType checkPointType = lastCheckPoint.CheckPointType;
         if (checkPointType == CheckPointType.LevelEnd)
         {
+            StartCoroutine(StopPlayerMovementAfterDelay());
+            
             checkPoint.PlayCheckPointActivatedEfx();
-            //TODO: Move to next level
+            levelProgressionManager.LoadNextLevel();
         }
         else if (checkPointType == CheckPointType.PickUp)
         {
@@ -60,6 +64,12 @@ public class CheckPointManager : MonoBehaviour
             checkPoint.PlayCheckPointActivatedEfx();
             uiManager.GameplayUi.ShowCheckPointReachUi();
         }
+    }
+
+    private IEnumerator StopPlayerMovementAfterDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        player.playerMovement.StopAllMovement(true);
     }
 
     public Vector3 GetLastCheckPointSpawnPos()

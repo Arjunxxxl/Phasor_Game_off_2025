@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadingScreen
   bgRectT: {fileID: 5697785059892163021}
-  entryExitDur: 0.75
+  entryExitDur: 0.5
 --- !u!1 &2760587763901802800
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5697785059892163021
 RectTransform:
   m_ObjectHideFlags: 0
