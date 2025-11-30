@@ -6,6 +6,7 @@ public class PlayerEfxManager : MonoBehaviour
     [SerializeField] private ParticleSystem phaseItemPickupEfx;
     [SerializeField] private ParticleSystem landEfx;
     [SerializeField] private ParticleSystem jumpfx;
+    [SerializeField] private ParticleSystem hitfx;
     
     public void PlayItemPickup()
     {
@@ -30,5 +31,10 @@ public class PlayerEfxManager : MonoBehaviour
     public void StopJumpEfx()
     {
         jumpfx.Stop();
+    }
+    
+    public void PlayHitEfx()
+    {
+        hitfx.Play();
     }
 }

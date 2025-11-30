@@ -412,6 +412,9 @@ MonoBehaviour:
   - tag: 1
     prefab: {fileID: 6402159958070622604, guid: f55faaae9b2f7694d9cc4371aa803d10, type: 3}
     size: 10
+  - tag: 2
+    prefab: {fileID: 195360, guid: a3c24a5ae068ed44d950af671f99cc21, type: 3}
+    size: 10
 --- !u!1 &7721138547757358660
 GameObject:
   m_ObjectHideFlags: 0

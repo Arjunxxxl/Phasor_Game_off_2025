@@ -57,6 +57,7 @@ public class PlayerCollisionDetection : MonoBehaviour
                 Vector3 hitVelocity = direction * Constants.Player.HangingAxeHitSpeed;
                 
                 player.playerMovement.AddVelocityOnObstacle(hitVelocity);
+                player.playerEfxManager.PlayHitEfx();
                 
                 bool isDied = heartManager.ConsumeOneHeart();
                 if (isDied)
@@ -76,6 +77,7 @@ public class PlayerCollisionDetection : MonoBehaviour
                 Vector3 hitVelocity = direction * Constants.Player.RotatingHammerHitSpeed;
                 
                 player.playerMovement.AddVelocityOnObstacle(hitVelocity);
+                player.playerEfxManager.PlayHitEfx();
                 
                 bool isDied = heartManager.ConsumeOneHeart();
                 if (isDied)

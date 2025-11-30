@@ -63,6 +63,11 @@ public class Player : MonoBehaviour
     public void SetIsDead(bool isDead)
     {
         this.isDead = isDead;
+
+        if (isDead)
+        {
+            ObjectPooler.Instance.SpawnFromPool(2, transform.position, Quaternion.identity);
+        }
     }
 
     public bool GetIsDead() => isDead;
