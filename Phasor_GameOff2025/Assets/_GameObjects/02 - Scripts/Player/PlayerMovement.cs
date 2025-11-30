@@ -207,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
             
             player.playerAnimator.PlayJumpAnimation();
             player.playerAnimator.PlayJumpTween();
+            player.playerEfxManager.PlayJumpEfx();
         }
         else if (isGrounded && !wasGrounded)
         {
@@ -215,6 +216,8 @@ public class PlayerMovement : MonoBehaviour
             player.playerAnimator.StopJumpAnimation();
             player.playerAnimator.StopFallAnimation();
             player.playerAnimator.PlayLandTween();
+            player.playerEfxManager.PlayLandEfx();
+            player.playerEfxManager.StopJumpEfx();
             
             cameraShake.ShakeCameraForLanding();
         }
