@@ -38,6 +38,11 @@ public class LocalDataManager : MonoBehaviour
         LoadCheckPointInfoData();
         LoadPhasesData();
     }
+
+    public void ClearAllData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     
     #region Level
 
@@ -49,6 +54,12 @@ public class LocalDataManager : MonoBehaviour
     public void SaveLevelNameData(string levelName)
     {
         this.levelName = levelName;
+        PlayerPrefs.SetString(Constants.LocalData.LevelName_Tag, levelName);
+    }
+
+    public void ResetLevelNameData()
+    {
+        levelName = Constants.SceneData.StartingLevelName;
         PlayerPrefs.SetString(Constants.LocalData.LevelName_Tag, levelName);
     }
 

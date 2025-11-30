@@ -45,7 +45,9 @@ public class GameOverUi : MonoBehaviour
 
     private void OnClickRestartButton()
     {
+        LocalDataManager.Instance.ClearAllData();
         LocalDataManager.Instance.ResetHeartLeftData(true);
+        LocalDataManager.Instance.ResetLevelNameData();
         LevelProgressionManager.Instance.LoadFirstLevel();
     }
 
