@@ -116,7 +116,7 @@ public class PhaseManager : MonoBehaviour
     {
         int phaseInputIdx = userInput.PhaseInput;
         
-        if (phaseInputIdx <= 0)
+        if (phaseInputIdx < 0)
         {
             return;
         }

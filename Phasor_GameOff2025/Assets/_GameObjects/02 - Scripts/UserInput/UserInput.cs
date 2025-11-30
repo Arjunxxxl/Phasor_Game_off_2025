@@ -7,7 +7,7 @@ public class UserInput : MonoBehaviour
     private bool jumpInput;
 
     // Phase Input
-    private int phaseInput;
+    private int phaseInput = -1;
     
     public Vector2 MoveInput => moveInput;
     public bool JumpInput => jumpInput;
@@ -55,7 +55,12 @@ public class UserInput : MonoBehaviour
 
     private void GetPhasedInput()
     {
-        phaseInput = 0;
+        phaseInput = -1;
+        
+        if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            phaseInput = 0;
+        } 
         
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
         {
