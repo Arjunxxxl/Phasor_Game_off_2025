@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HeartManager : MonoBehaviour
@@ -51,11 +52,17 @@ public class HeartManager : MonoBehaviour
         
         if (heartsLeft <= 0)
         {
-            // TODO: game over
+            StartCoroutine(ShowGameOverUi());
             return true;
         }
 
         return false;
+    }
+
+    private IEnumerator ShowGameOverUi()
+    {
+        yield return new WaitForSeconds(1.0f);
+        UiManager.Instance.GameOverUi.ShowMenu();
     }
 
     #endregion

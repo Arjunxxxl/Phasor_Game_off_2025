@@ -34,7 +34,7 @@ public class InfoPanel : MonoBehaviour
         canvas.enabled = true;
     }
 
-    public void HideMenu()
+    private void HideMenu()
     {
         canvas.enabled = false;
     }

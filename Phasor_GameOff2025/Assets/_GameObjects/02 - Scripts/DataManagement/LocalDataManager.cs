@@ -96,9 +96,9 @@ public class LocalDataManager : MonoBehaviour
         return heartsLeft;
     }
 
-    private void ResetHeartLeftData()
+    public void ResetHeartLeftData(bool forceReset = false)
     {
-        if (heartsLeft <= 0)
+        if (heartsLeft <= 0 || forceReset)
         {
             PlayerPrefs.SetInt(Constants.LocalData.HeartsLeft_Tag, Constants.Player.MaxHeartCt);
             heartsLeft = Constants.Player.MaxHeartCt;
