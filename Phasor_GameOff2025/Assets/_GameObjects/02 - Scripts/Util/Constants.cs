@@ -9,6 +9,8 @@ public static class Constants
         public static readonly float HangingAxeHitSpeed = 15.0f;
         public static readonly float RotatingHammerHitSpeed = 15.0f;
         public static readonly Vector3 ObstacleHitSpeedDecrement = new Vector3(3.5f, 10.0f, 3.5f);
+        
+        public static readonly int MaxHeartCt = 5;
     }
     
     public static class PhaseData
@@ -31,6 +33,7 @@ public static class Constants
     {
         public static readonly string LevelNumber_Tag = "LevelNumber";
         public static readonly string CheckPointInfoShown_Tag = "CheckPointInfoShown";
+        public static readonly string HeartsLeft_Tag = "HeartsLeft";
         public static readonly string TimeShiftInfoShown_Tag = "TimeShiftInfoShown";
         public static readonly string AirInfoShown_Tag = "AirInfoShown";
         public static readonly string TotalPhasesUnlocked_Tag = "TotalPhasesUnlocked";

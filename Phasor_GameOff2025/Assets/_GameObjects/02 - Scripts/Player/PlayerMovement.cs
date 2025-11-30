@@ -51,7 +51,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stopAllMovement)
+        bool isDead = player.GetIsDead();
+        
+        if (isDead || stopAllMovement)
         {
             return;
         }

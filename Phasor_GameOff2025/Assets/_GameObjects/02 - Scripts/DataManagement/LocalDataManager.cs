@@ -3,6 +3,7 @@ using UnityEngine;
 public class LocalDataManager : MonoBehaviour
 {
     private int levelNumber = 0;
+    private int heartsLeft = 0;
     private bool checkPointInfoShown = false;
     private bool timeShiftInfoShown = false;
     private bool airInfoShown = false;
@@ -33,6 +34,7 @@ public class LocalDataManager : MonoBehaviour
     private void LoadAllData()
     {
         LoadLevelNumberData();
+        LoadHeartLeftData();
         LoadCheckPointInfoData();
         LoadPhasesData();
     }
@@ -68,6 +70,39 @@ public class LocalDataManager : MonoBehaviour
     public bool IsCheckPointInfoShown()
     {
         return checkPointInfoShown;
+    }
+    
+    #endregion
+    
+    #region Heart
+
+    private void LoadHeartLeftData()
+    {
+        heartsLeft = PlayerPrefs.GetInt(Constants.LocalData.HeartsLeft_Tag, Constants.Player.MaxHeartCt);
+        
+        ResetHeartLeftData();
+    }
+
+    public void SaveHeartLeftData(int heartsLeft)
+    {
+        this.heartsLeft = heartsLeft;
+        PlayerPrefs.SetInt(Constants.LocalData.HeartsLeft_Tag, heartsLeft);
+
+        ResetHeartLeftData();
+    }
+
+    public int GetHeartLeft()
+    {
+        return heartsLeft;
+    }
+
+    private void ResetHeartLeftData()
+    {
+        if (heartsLeft <= 0)
+        {
+            PlayerPrefs.SetInt(Constants.LocalData.HeartsLeft_Tag, Constants.Player.MaxHeartCt);
+            heartsLeft = Constants.Player.MaxHeartCt;
+        }
     }
     
     #endregion

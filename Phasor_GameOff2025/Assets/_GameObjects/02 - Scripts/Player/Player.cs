@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Data
+    private bool isDead = false;
+    
     // Ref Self
     public PlayerMovement playerMovement { get; private set; }
     public PlayerAnimator playerAnimator { get; private set; }
@@ -49,7 +52,20 @@ public class Player : MonoBehaviour
         
         Vector3 spawnPos = CheckPointManager.Instance.GetLastCheckPointSpawnPos();
         transform.position = spawnPos;
+
+        SetIsDead(false);
     }
+
+    #endregion
+
+    #region Death
+
+    public void SetIsDead(bool isDead)
+    {
+        this.isDead = isDead;
+    }
+
+    public bool GetIsDead() => isDead;
 
     #endregion
 }

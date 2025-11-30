@@ -16,6 +16,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     private Player player;
     private CheckPointManager checkPointManager;
     private DiamondManager diamondManager;
+    private HeartManager heartManager;
     private ObjectPooler objectPooler;
 
     private void Update()
@@ -29,6 +30,7 @@ public class PlayerCollisionDetection : MonoBehaviour
     {
         checkPointManager = CheckPointManager.Instance;
         diamondManager = DiamondManager.Instance;
+        heartManager = HeartManager.Instance;
         objectPooler = ObjectPooler.Instance;
         
         this.player = player;
@@ -53,6 +55,13 @@ public class PlayerCollisionDetection : MonoBehaviour
                 Vector3 hitVelocity = direction * Constants.Player.HangingAxeHitSpeed;
                 
                 player.playerMovement.AddVelocityOnObstacle(hitVelocity);
+                
+                bool isDied = heartManager.ConsumeOneHeart();
+                if (isDied)
+                {
+                    player.SetIsDead(true);
+                    gameObject.SetActive(false);
+                }
             }
             else if (obstacleRotatingHammer != null)
             {
@@ -63,6 +72,13 @@ public class PlayerCollisionDetection : MonoBehaviour
                 Vector3 hitVelocity = direction * Constants.Player.RotatingHammerHitSpeed;
                 
                 player.playerMovement.AddVelocityOnObstacle(hitVelocity);
+                
+                bool isDied = heartManager.ConsumeOneHeart();
+                if (isDied)
+                {
+                    player.SetIsDead(true);
+                    gameObject.SetActive(false);
+                }
             }
         }
         else if ((checkPointLayer.value & (1 << other.gameObject.layer)) != 0)
@@ -136,7 +152,17 @@ public class PlayerCollisionDetection : MonoBehaviour
 
         if (yPos <= Constants.Player.LevelBelowYPos)
         {
-            checkPointManager.RespawnPlayerAtLastCheckPoint();
+            bool isDied = heartManager.ConsumeOneHeart();
+
+            if (isDied)
+            {
+                player.SetIsDead(true);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                checkPointManager.RespawnPlayerAtLastCheckPoint();
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private CheckPointManager checkPointManager;
     private PhaseManager phaseManager;
     private DiamondManager diamondManager;
+    private HeartManager heartManager;
     
     #region Singleton
     
@@ -41,12 +42,15 @@ public class GameManager : MonoBehaviour
         checkPointManager = CheckPointManager.Instance;
         phaseManager = PhaseManager.Instance;
         diamondManager = DiamondManager.Instance;
+        heartManager = HeartManager.Instance;
         
         uiManager.SetUp();
+        
         infoPanelManager.SetUp();
         checkPointManager.SetUp();
         player.SetUp();
         phaseManager.SetUp(player);
         diamondManager.SetUp();
+        heartManager.SetUp();
     }
 }
