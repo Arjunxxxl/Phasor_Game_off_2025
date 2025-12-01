@@ -13,6 +13,8 @@ public class LevelProgressionManager : MonoBehaviour
     private string curSceneName;
     private string nextSceneName;
     
+    public string CurSceneName => curSceneName;
+    
     private LocalDataManager localDataManager;
     
     #region Singleton
@@ -33,7 +35,7 @@ public class LevelProgressionManager : MonoBehaviour
 
     #endregion
     
-    private void Start()
+    public void SetUp()
     {
         localDataManager = LocalDataManager.Instance;
         

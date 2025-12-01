@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private DiamondManager diamondManager;
     private HeartManager heartManager;
     private PauseManager pauseManager;
+    private LevelProgressionManager levelProgressionManager;
     
     #region Singleton
     
@@ -45,6 +46,9 @@ public class GameManager : MonoBehaviour
         diamondManager = DiamondManager.Instance;
         heartManager = HeartManager.Instance;
         pauseManager = PauseManager.Instance;
+        levelProgressionManager = LevelProgressionManager.Instance;
+        
+        levelProgressionManager.SetUp();
         
         uiManager.SetUp();
         

@@ -1,10 +1,12 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class GameplayUi : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject checkPointReachedPanel;
+    public TMP_Text levelNumberText;
     
     [Header("Ref")]
     [SerializeField] private DiamondUi diamondUi;
@@ -13,6 +15,8 @@ public class GameplayUi : MonoBehaviour
     public void SetUp()
     {
         HideCheckPointReachedUi();
+
+        levelNumberText.text = LevelProgressionManager.Instance.CurSceneName;
     }
 
     #region CheckPoint Reached Ui
