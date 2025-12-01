@@ -7,14 +7,16 @@ public enum AudioClipType
     ButtonClick,
     Jump,
     Land,
+    Step,
     Hit,
     Die,
     DoorOpen,
     LevelCompleted,
     DiamondCollect,
     PhaseCollect,
-    TimeSlowPhaseActivated,
-    AirPhaseActivated
+    KeyCollected,
+    PhaseActivated,
+    TimeSlowPhaseActivated_1
 }
 
 [System.Serializable]
