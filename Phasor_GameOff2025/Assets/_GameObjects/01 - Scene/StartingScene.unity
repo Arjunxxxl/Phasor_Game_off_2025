@@ -1137,7 +1137,7 @@ MonoBehaviour:
     character a unique ability, essential tools for overcoming the challenges hidden
     deep within your subconscious. Phases must be unlocked through exploration before
     you can activate them.\n\n---------------------------------------------------------------------------------------------------------------------------------------------------------------\n\nControls\n\n->
-    W A S D \u2013 Move\n\n-> Space \u2013 Jump\n\n-> Num Keys 1\u20135 to Activate
+    W A S D \u2013 Move\n\n-> Space \u2013 Jump\n\n-> Num Keys 1,2 or X,C to Activate
     Phases\n\nShift the dream. Master the phases. Escape your mind."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c01a8efaf000a4604a3401af9a739226, type: 2}
