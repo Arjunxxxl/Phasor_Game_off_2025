@@ -13,6 +13,8 @@ public class StartingSceneUi : MonoBehaviour
 
     private void OnClickPlayButton()
     {
+        AudioManager.Instance.PlayAudio(AudioClipType.ButtonClick);
+        
         LevelProgressionManager.Instance.LoadLevelFromStartingLevel();
     }
 }

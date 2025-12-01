@@ -8,6 +8,8 @@ public class InventoryItem : MonoBehaviour
 
     public void OnItemPickedUp()
     {
+        AudioManager.Instance.PlayAudio(AudioClipType.KeyCollected);
+        
         gameObject.SetActive(false);
     }
 }

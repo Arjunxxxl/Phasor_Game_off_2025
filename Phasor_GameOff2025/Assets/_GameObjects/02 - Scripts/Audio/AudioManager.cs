@@ -13,6 +13,7 @@ public enum AudioClipType
     DoorOpen,
     LevelCompleted,
     DiamondCollect,
+    CheckPointCollected,
     PhaseCollect,
     KeyCollected,
     PhaseActivated,
@@ -126,5 +127,7 @@ public class AudioManager : MonoBehaviour
         {
             freeSource.pitch = 1.0f;
         }
+        
+        freeSource.Play();
     }
 }

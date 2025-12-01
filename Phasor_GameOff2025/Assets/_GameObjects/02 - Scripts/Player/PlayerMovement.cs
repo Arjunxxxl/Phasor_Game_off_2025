@@ -42,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool UseHighJump = false;
     
+    // Step Audio
+    private readonly float gapBewteenSteps = 0.25f;
+    private float stepTimeElapsed = 0.0f;
+    
     // Character Controller
     private CharacterController characterController;
     
@@ -66,8 +70,10 @@ public class PlayerMovement : MonoBehaviour
         TriggerJump();
         MovePlayer();
         UpdateObstacleHitSpeed();
-
+        
         RotatePlayer();
+
+        TickStepTimerForStepsAudio();
     }
 
     #region SetUp
@@ -84,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = baseMoveSpeed;
         gravity = groundedGravity;
 
+        stepTimeElapsed = 0.0f;
+        
         CalcJumpData();
         SetUpGroundDetection();
     }
@@ -208,6 +216,8 @@ public class PlayerMovement : MonoBehaviour
             player.playerAnimator.PlayJumpAnimation();
             player.playerAnimator.PlayJumpTween();
             player.playerEfxManager.PlayJumpEfx();
+            
+            AudioManager.Instance.PlayAudio(AudioClipType.Jump, true);
         }
         else if (isGrounded && !wasGrounded)
         {
@@ -220,6 +230,8 @@ public class PlayerMovement : MonoBehaviour
             player.playerEfxManager.StopJumpEfx();
             
             cameraShake.ShakeCameraForLanding();
+            
+            AudioManager.Instance.PlayAudio(AudioClipType.Land, true);
         }
     }
 
@@ -311,6 +323,29 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    #region Step Audio
+
+    private void TickStepTimerForStepsAudio()
+    {
+        if (isJumping)
+        {
+            return;
+        }
+        
+        if (moveDir.x != 0 || moveDir.z != 0)
+        {
+            stepTimeElapsed += Time.unscaledDeltaTime;
+
+            if (stepTimeElapsed >= gapBewteenSteps)
+            {
+                stepTimeElapsed = 0;
+                AudioManager.Instance.PlayAudio(AudioClipType.Step, true);
+            }
+        }
+    }
+
+    #endregion
+    
     #region Getters
 
     public Vector3 GetActualForwardDir()

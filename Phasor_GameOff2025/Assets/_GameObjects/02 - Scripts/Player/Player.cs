@@ -67,6 +67,8 @@ public class Player : MonoBehaviour
         if (isDead)
         {
             ObjectPooler.Instance.SpawnFromPool(2, transform.position, Quaternion.identity);
+            
+            AudioManager.Instance.PlayAudio(AudioClipType.Die);
         }
     }
 

@@ -67,6 +67,8 @@ public class PlayerCollisionDetection : MonoBehaviour
                 }
                 
                 cameraShake.ShakeCameraOnObstacleHit();
+                
+                AudioManager.Instance.PlayAudio(AudioClipType.Hit);
             }
             else if (obstacleRotatingHammer != null)
             {
@@ -87,6 +89,8 @@ public class PlayerCollisionDetection : MonoBehaviour
                 }
                 
                 cameraShake.ShakeCameraOnObstacleHit();
+                
+                AudioManager.Instance.PlayAudio(AudioClipType.Hit);
             }
         }
         else if ((checkPointLayer.value & (1 << other.gameObject.layer)) != 0)

@@ -11,6 +11,9 @@ public class PhasePickUp : MonoBehaviour
         player.playerEfxManager.PlayItemPickup();
         
         player.phaseManager.AddNewPhase(phaseType);
+        
+        AudioManager.Instance.PlayAudio(AudioClipType.PhaseCollect);
+        
         gameObject.SetActive(false);
     }
 }

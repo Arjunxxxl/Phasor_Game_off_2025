@@ -180,18 +180,26 @@ public class PhaseManager : MonoBehaviour
             
             case PhasesType.TimeShift:
                 EnableTimeShiftEffect();
+                
+                AudioManager.Instance.PlayAudio(AudioClipType.TimeSlowPhaseActivated_1);
                 break;
             
             case PhasesType.Air:
                 EnableAirEffect();
+                
+                AudioManager.Instance.PlayAudio(AudioClipType.PhaseActivated);
                 break;
             
             case PhasesType.AstralPlane:
                 EnableAstralEffect();
+                
+                AudioManager.Instance.PlayAudio(AudioClipType.PhaseActivated);
                 break;
             
             case PhasesType.Mirror:
                 EnableMirrorEffect();
+                
+                AudioManager.Instance.PlayAudio(AudioClipType.PhaseActivated);
                 break;
         }
     }

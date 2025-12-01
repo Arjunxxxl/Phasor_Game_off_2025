@@ -40,11 +40,15 @@ public class PauseUi : MonoBehaviour
 
     private void OnClickQuitButton()
     {
+        AudioManager.Instance.PlayAudio(AudioClipType.ButtonClick);
+        
         Application.Quit();
     }
 
     private void OnClickResumeButton()
     {
+        AudioManager.Instance.PlayAudio(AudioClipType.ButtonClick);
+        
         PauseManager.Instance.PauseResumeGame();
     }
 

@@ -41,6 +41,8 @@ public class DiamondManager : MonoBehaviour
     {
         totalDiamondCollected++;
         UpdateDiamondTxt();
+        
+        AudioManager.Instance.PlayAudio(AudioClipType.DiamondCollect, true);
     }
 
     #endregion

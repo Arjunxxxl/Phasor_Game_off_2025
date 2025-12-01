@@ -54,6 +54,8 @@ public class CheckPointManager : MonoBehaviour
             
             checkPoint.PlayCheckPointActivatedEfx();
             levelProgressionManager.LoadNextLevel();
+            
+            AudioManager.Instance.PlayAudio(AudioClipType.LevelCompleted);
         }
         else if (checkPointType == CheckPointType.PickUp)
         {
@@ -63,6 +65,8 @@ public class CheckPointManager : MonoBehaviour
         {
             checkPoint.PlayCheckPointActivatedEfx();
             uiManager.GameplayUi.ShowCheckPointReachUi();
+            
+            AudioManager.Instance.PlayAudio(AudioClipType.CheckPointCollected);
         }
     }
 

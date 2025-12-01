@@ -1204,9 +1204,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: d4090849bf6c9684b9bb05c7746dce1c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1336,7 +1336,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2797246dfeefa04ab7111b4b3f408b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  allAudioData: []
+  allAudioData:
+  - audioClipType: 0
+    audioClip: {fileID: 8300000, guid: 414f405f7cd913142a5faf3a02284911, type: 3}
+    volume: 0.5
+  - audioClipType: 1
+    audioClip: {fileID: 8300000, guid: 56c0c56a64166234f822ce1472cf569d, type: 3}
+    volume: 0.5
+  - audioClipType: 2
+    audioClip: {fileID: 8300000, guid: 0ef8d146d634aa441aa0e573a8248baf, type: 3}
+    volume: 0.5
+  - audioClipType: 3
+    audioClip: {fileID: 8300000, guid: c3364cd75937f4c42a01f40c2ed01fae, type: 3}
+    volume: 0.35
+  - audioClipType: 4
+    audioClip: {fileID: 8300000, guid: 29ab28d46ee2da542a80d917b0e458f6, type: 3}
+    volume: 0.5
+  - audioClipType: 5
+    audioClip: {fileID: 8300000, guid: 549318baf94687149b60f28596238dc7, type: 3}
+    volume: 0.5
+  - audioClipType: 6
+    audioClip: {fileID: 0}
+    volume: 0.5
+  - audioClipType: 7
+    audioClip: {fileID: 8300000, guid: 30a7353eba7b24642bcf30b3c2726709, type: 3}
+    volume: 1
+  - audioClipType: 8
+    audioClip: {fileID: 8300000, guid: aff42198b7fa05245a627b2ede685e26, type: 3}
+    volume: 0.7
+  - audioClipType: 10
+    audioClip: {fileID: 8300000, guid: 83086b6237a57314ab283ba75bea4d14, type: 3}
+    volume: 0.75
+  - audioClipType: 11
+    audioClip: {fileID: 8300000, guid: 6b4acc2ddb6c952428854f8c207bae49, type: 3}
+    volume: 0.5
+  - audioClipType: 12
+    audioClip: {fileID: 8300000, guid: 8fb3cd613b69d0b47a8b3ccd4cabeaa2, type: 3}
+    volume: 0.5
+  - audioClipType: 13
+    audioClip: {fileID: 8300000, guid: 49b0a1dc17dccdd489a2f9367b7145c5, type: 3}
+    volume: 0.5
+  - audioClipType: 9
+    audioClip: {fileID: 8300000, guid: a816ff1d4f900644f9be73a1ee56bc8d, type: 3}
+    volume: 0.75
   bgAudioSource: {fileID: 1313673121980044316}
   allAudioSources:
   - {fileID: 8329640013559971529}

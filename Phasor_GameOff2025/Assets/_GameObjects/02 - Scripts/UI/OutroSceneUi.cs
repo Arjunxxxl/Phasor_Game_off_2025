@@ -17,11 +17,15 @@ public class OutroSceneUi : MonoBehaviour
 
     private void OnClickQuitButton()
     {
+        AudioManager.Instance.PlayAudio(AudioClipType.ButtonClick);
+        
         Application.Quit();
     }
 
     private void OnClickRestartButton()
     {
+        AudioManager.Instance.PlayAudio(AudioClipType.ButtonClick);
+        
         LocalDataManager.Instance.ClearAllData();
         LocalDataManager.Instance.ResetHeartLeftData(true);
         LocalDataManager.Instance.ResetLevelNameData();
