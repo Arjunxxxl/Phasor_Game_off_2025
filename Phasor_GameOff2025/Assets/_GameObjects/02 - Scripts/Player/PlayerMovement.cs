@@ -327,7 +327,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void TickStepTimerForStepsAudio()
     {
-        if (isJumping)
+        if (!isGrounded)
         {
             return;
         }

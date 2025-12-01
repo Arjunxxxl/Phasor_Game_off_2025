@@ -31,6 +31,16 @@ public class LevelProgressionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        levelScenes = new List<string>
+        {
+            "Level 1",
+            "Level 2",
+            "Level 3",
+            "Level 4",
+            "Level 5",
+            "Level 6"
+        };
     }
 
     #endregion
