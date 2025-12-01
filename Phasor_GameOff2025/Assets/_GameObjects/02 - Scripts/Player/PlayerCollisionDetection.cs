@@ -148,7 +148,7 @@ public class PlayerCollisionDetection : MonoBehaviour
                     }
                     else
                     {
-                        // Show Key is requied message in ui and ask player to find he key
+                        UiManager.Instance.GameplayUi.ShowKeyNeededUi();
                     }
                 }
             }

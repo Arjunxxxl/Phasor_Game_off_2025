@@ -9,6 +9,9 @@ public class OutroSceneUi : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        
         restartButton.onClick.AddListener(OnClickRestartButton);
         quitButton.onClick.AddListener(OnClickQuitButton);
     }

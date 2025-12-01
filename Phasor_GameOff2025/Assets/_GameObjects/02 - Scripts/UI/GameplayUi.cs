@@ -6,6 +6,7 @@ public class GameplayUi : MonoBehaviour
 {
     [Header("Panels")]
     public GameObject checkPointReachedPanel;
+    public GameObject needNeededPanel;
     public TMP_Text levelNumberText;
     
     [Header("Ref")]
@@ -16,6 +17,7 @@ public class GameplayUi : MonoBehaviour
     public void SetUp()
     {
         HideCheckPointReachedUi();
+        HideKeyNeededUi();
 
         levelNumberText.text = LevelProgressionManager.Instance.CurSceneName;
     }
@@ -38,6 +40,28 @@ public class GameplayUi : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         HideCheckPointReachedUi();
+    }
+
+    #endregion
+
+    #region Key Needed Ui
+
+    public void ShowKeyNeededUi()
+    {
+        needNeededPanel.SetActive(true);
+
+        StartCoroutine(HideKeyNeededUiAfterDelay());
+    }
+
+    private void HideKeyNeededUi()
+    {
+        needNeededPanel.SetActive(false);
+    }
+
+    private IEnumerator HideKeyNeededUiAfterDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        HideKeyNeededUi();
     }
 
     #endregion

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -59,5 +60,50 @@ public class GameManager : MonoBehaviour
         diamondManager.SetUp();
         heartManager.SetUp();
         pauseManager.SetUp();
+
+        HideCursor();
+    }
+
+    private void Update()
+    {
+        #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SaveScreenshot();
+        }
+        #endif
+    }
+
+    public void HideCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void ShowCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+    
+    private void SaveScreenshot()
+    {
+        // Create a timestamp string
+        string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+
+        // Create folder if it doesn't exist
+        string folderPath = Path.Combine(Application.persistentDataPath, "Screenshots");
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        // Full file path
+        string filePath = Path.Combine(folderPath, $"screenshot_{timestamp}.png");
+
+        // Take screenshot
+        ScreenCapture.CaptureScreenshot(filePath);
+
+        Debug.Log("Screenshot saved at: " + filePath);
     }
 }

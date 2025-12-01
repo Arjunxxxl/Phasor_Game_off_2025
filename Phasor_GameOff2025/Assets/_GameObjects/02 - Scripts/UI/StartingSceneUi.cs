@@ -8,6 +8,9 @@ public class StartingSceneUi : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        
         playButton.onClick.AddListener(OnClickPlayButton);
 
         LevelProgressionManager.Instance.SetUp();

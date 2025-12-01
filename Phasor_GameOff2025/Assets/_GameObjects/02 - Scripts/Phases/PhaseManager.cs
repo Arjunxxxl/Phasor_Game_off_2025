@@ -96,8 +96,10 @@ public class PhaseManager : MonoBehaviour
                 availablePhases.Add(phasesType);
             }
         }
-        /*availablePhases.Add(PhasesType.TimeShift);
+        
+        availablePhases.Add(PhasesType.TimeShift);
         availablePhases.Add(PhasesType.Air);
+        /*
         availablePhases.Add(PhasesType.Mirror);*/
     }
 

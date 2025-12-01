@@ -26,11 +26,13 @@ public class PauseUi : MonoBehaviour
 
     public void ShowMenu()
     {
+        GameManager.Instance.ShowCursor();
         canvas.enabled = true;
     }
 
     public void HideMenu()
     {
+        GameManager.Instance.HideCursor();
         canvas.enabled = false;
     }
 

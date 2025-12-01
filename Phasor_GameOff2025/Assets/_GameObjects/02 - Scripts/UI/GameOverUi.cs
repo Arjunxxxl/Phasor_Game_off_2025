@@ -26,11 +26,13 @@ public class GameOverUi : MonoBehaviour
 
     public void ShowMenu()
     {
+        GameManager.Instance.ShowCursor();
         canvas.enabled = true;
     }
 
     private void HideMenu()
     {
+        GameManager.Instance.HideCursor();
         canvas.enabled = false;
     }
 
