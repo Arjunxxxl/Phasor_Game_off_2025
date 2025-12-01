@@ -45,8 +45,6 @@ public class HeartManager : MonoBehaviour
 
     public bool ConsumeOneHeart()
     {
-        return false;
-        
         heartsLeft--;
 
         heartUi.UpdateHeartUi(heartsLeft);
