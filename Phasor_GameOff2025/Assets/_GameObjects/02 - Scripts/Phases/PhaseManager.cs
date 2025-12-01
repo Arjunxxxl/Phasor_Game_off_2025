@@ -24,6 +24,7 @@ public class PhaseManager : MonoBehaviour
     private Player player;
     private UserInput userInput;
     private InfoPanelManager infoPanelManager;
+    private PhaseUi phaseUi;
     private LocalDataManager localDataManager;
     
     // Properties
@@ -65,6 +66,7 @@ public class PhaseManager : MonoBehaviour
         userInput = UserInput.Instance;
         infoPanelManager = InfoPanelManager.Instance;
         localDataManager = LocalDataManager.Instance;
+        phaseUi = UiManager.Instance.GameplayUi.PhaseUi;
         
         this.player = player;
 
@@ -74,6 +76,8 @@ public class PhaseManager : MonoBehaviour
         SetUpDataReqForPhases();
 
         ActivatePhase(PhasesType.Default);
+        
+        phaseUi.SetUp(availablePhases);
     }
 
     private void LoadAvailablePhases()
@@ -148,6 +152,8 @@ public class PhaseManager : MonoBehaviour
         isPhaseCountdownActive = activePhase != PhasesType.Default;
 
         EnablePhaseEffect(activePhase);
+        
+        phaseUi.UpdateInActiveUi(phaseActiveTimeElapsed, phaseActiveDuration);
     }
 
     private void TickPhaseCoolDownTimer()
@@ -158,12 +164,17 @@ public class PhaseManager : MonoBehaviour
         }
         
         phaseActiveTimeElapsed += Time.unscaledDeltaTime;
+        
+        phaseUi.UpdateInActiveUi(phaseActiveTimeElapsed, phaseActiveDuration);
+        
         if (phaseActiveTimeElapsed >= phaseActiveDuration)
         {
             isPhaseCountdownActive = false;
             
             DisablePhaseEffect(activePhase);
             ActivatePhase(PhasesType.Default);
+            
+            phaseUi.RemoveInActiveUi();
         }
     }
 
@@ -319,6 +330,8 @@ public class PhaseManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         infoPanelManager.ShowInfoPanel(false, phase);
+        
+        phaseUi.UpdatePhaseUi(availablePhases);
     }
 
     #endregion

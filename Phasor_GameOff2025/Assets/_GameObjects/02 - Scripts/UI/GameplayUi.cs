@@ -11,6 +11,7 @@ public class GameplayUi : MonoBehaviour
     [Header("Ref")]
     [SerializeField] private DiamondUi diamondUi;
     [SerializeField] private HeartUi heartUi;
+    [SerializeField] private PhaseUi phaseUi;
 
     public void SetUp()
     {
@@ -45,6 +46,7 @@ public class GameplayUi : MonoBehaviour
 
     public DiamondUi DiamondUi => diamondUi;
     public HeartUi HeartUi => heartUi;
+    public PhaseUi PhaseUi => phaseUi;
 
     #endregion
 }
