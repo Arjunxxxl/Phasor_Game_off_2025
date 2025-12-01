@@ -46,6 +46,7 @@ public class PlayerCollisionDetection : MonoBehaviour
         {
             ObstacleHangingAxe obstacleHangingAxe = other.GetComponent<ObstacleHangingAxe>();
             ObstacleRotatingHammer obstacleRotatingHammer = other.GetComponent<ObstacleRotatingHammer>();
+            CannonBall cannonBall = other.GetComponent<CannonBall>();
             
             if (obstacleHangingAxe != null)
             {
@@ -79,6 +80,21 @@ public class PlayerCollisionDetection : MonoBehaviour
                 Vector3 hitVelocity = direction * Constants.Player.RotatingHammerHitSpeed;
                 
                 player.playerMovement.AddVelocityOnObstacle(hitVelocity);
+                player.playerEfxManager.PlayHitEfx();
+                
+                bool isDied = heartManager.ConsumeOneHeart();
+                if (isDied)
+                {
+                    player.SetIsDead(true);
+                    gameObject.SetActive(false);
+                }
+                
+                cameraShake.ShakeCameraOnObstacleHit();
+                
+                AudioManager.Instance.PlayAudio(AudioClipType.Hit);
+            }
+            else if (cannonBall != null)
+            {
                 player.playerEfxManager.PlayHitEfx();
                 
                 bool isDied = heartManager.ConsumeOneHeart();
