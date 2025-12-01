@@ -41,6 +41,9 @@ public class LocalDataManager : MonoBehaviour
 
     public void ClearAllData()
     {
+        ResetCheckPointShown();
+        ResetPhasesUnlocked();
+        
         PlayerPrefs.DeleteAll();
     }
     
@@ -81,6 +84,12 @@ public class LocalDataManager : MonoBehaviour
     {
         this.checkPointInfoShown = isShown;
         PlayerPrefs.SetInt(Constants.LocalData.CheckPointInfoShown_Tag, isShown ? 1 : 0);
+    }
+
+    private void ResetCheckPointShown()
+    {
+        this.checkPointInfoShown = false;
+        PlayerPrefs.SetInt(Constants.LocalData.CheckPointInfoShown_Tag, 0);
     }
 
     public bool IsCheckPointInfoShown()
@@ -158,6 +167,14 @@ public class LocalDataManager : MonoBehaviour
         }
         
         return isUnlocked;
+    }
+    
+    private void ResetPhasesUnlocked()
+    {
+        PlayerPrefs.SetInt(Constants.LocalData.TimeShiftInfoShown_Tag, 0);
+        PlayerPrefs.SetInt(Constants.LocalData.AirInfoShown_Tag, 0);
+        
+        PlayerPrefs.SetInt(Constants.LocalData.TotalPhasesUnlocked_Tag, 0);
     }
     
     #endregion

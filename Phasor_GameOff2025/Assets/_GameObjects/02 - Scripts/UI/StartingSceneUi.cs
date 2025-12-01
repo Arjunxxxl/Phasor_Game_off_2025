@@ -9,6 +9,8 @@ public class StartingSceneUi : MonoBehaviour
     private void Start()
     {
         playButton.onClick.AddListener(OnClickPlayButton);
+
+        LevelProgressionManager.Instance.SetUp();
     }
 
     private void OnClickPlayButton()

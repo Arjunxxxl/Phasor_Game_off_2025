@@ -26,6 +26,7 @@ public class PhaseManager : MonoBehaviour
     private InfoPanelManager infoPanelManager;
     private PhaseUi phaseUi;
     private LocalDataManager localDataManager;
+    private PostProcessingManager postProcessingManager;
     
     // Properties
     public PhasesType ActivePhase => activePhase;
@@ -66,6 +67,7 @@ public class PhaseManager : MonoBehaviour
         userInput = UserInput.Instance;
         infoPanelManager = InfoPanelManager.Instance;
         localDataManager = LocalDataManager.Instance;
+        postProcessingManager = PostProcessingManager.Instance;
         phaseUi = UiManager.Instance.GameplayUi.PhaseUi;
         
         this.player = player;
@@ -241,13 +243,17 @@ public class PhaseManager : MonoBehaviour
     private void EnableTimeShiftEffect()
     {
         Time.timeScale = Constants.PhaseData.TimeShiftTimeSlow;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        
+        postProcessingManager.PlayEffect();
     }
 
     private void DisableTimeShiftEffect()
     {
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        
+        postProcessingManager.StopEffect();
     }
 
     #endregion
